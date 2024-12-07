@@ -2763,5 +2763,705 @@ export const quranData: QuranVerse[] = [
     numberInSurah: 100,
     text: "يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓا۟ إِن تُطِيعُوا۟ فَرِيقًۭا مِّنَ ٱلَّذِينَ أُوتُوا۟ ٱلْكِتَٰبَ يَرُدُّوكُم بَعْدَ إِيمَٰنِكُمْ كَٰفِرِينَ",
     translation: "O you who have believed, if you obey a party of those who were given the Scripture, they will turn you back, after your belief, [to being] unbelievers."
+  },
+  {
+    number: 394,
+    surah: 3,
+    numberInSurah: 101,
+    text: "وَكَيْفَ تَكْفُرُونَ وَأَنتُمْ تُتْلَىٰ عَلَيْكُمْ ءَايَٰتُ ٱللَّهِ وَفِيكُمْ رَسُولُهُۥ ۗ وَمَن يَعْتَصِم بِٱللَّهِ فَقَدْ هُدِىَ إِلَىٰ صِرَٰطٍۢ مُّسْتَقِيمٍۢ",
+    translation: "And how could you disbelieve while to you are being recited the verses of Allah and among you is His Messenger? And whoever holds firmly to Allah has [indeed] been guided to a straight path."
+  },
+  {
+    number: 395,
+    surah: 3,
+    numberInSurah: 102,
+    text: "يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ ٱتَّقُوا۟ ٱللَّهَ حَقَّ تُقَاتِهِۦ وَلَا تَمُوتُنَّ إِلَّا وَأَنتُم مُّسْلِمُونَ",
+    translation: "O you who have believed, fear Allah as He should be feared and do not die except as Muslims [in submission to Him]."
+  },
+  {
+    number: 396,
+    surah: 3,
+    numberInSurah: 103,
+    text: "وَٱعْتَصِمُوا۟ بِحَبْلِ ٱللَّهِ جَمِيعًۭا وَلَا تَفَرَّقُوا۟ ۚ وَٱذْكُرُوا۟ نِعْمَتَ ٱللَّهِ عَلَيْكُمْ إِذْ كُنتُمْ أَعْدَآءًۭ فَأَلَّفَ بَيْنَ قُلُوبِكُمْ فَأَصْبَحْتُم بِنِعْمَتِهِۦٓ إِخْوَٰنًۭا ۚ وَكُنتُمْ عَلَىٰ شَفَا حُفْرَةٍۢ مِّنَ ٱلنَّارِ فَأَنقَذَكُم مِّنْهَا ۗ كَذَٰلِكَ يُبَيِّنُ ٱللَّهُ لَكُمْ ءَايَٰتِهِۦ لَعَلَّكُمْ تَهْتَدُونَ",
+    translation: "And hold firmly to the rope of Allah all together and do not become divided. And remember the favor of Allah upon you - when you were enemies and He brought your hearts together and you became, by His favor, brothers. And you were on the edge of a pit of the Fire, and He saved you from it. Thus does Allah make clear to you His verses that you may be guided."
+  },
+  {
+    number: 397,
+    surah: 3,
+    numberInSurah: 104,
+    text: "وَلْتَكُن مِّنكُمْ أُمَّةٌۭ يَدْعُونَ إِلَى ٱلْخَيْرِ وَيَأْمُرُونَ بِٱلْمَعْرُوفِ وَيَنْهَوْنَ عَنِ ٱلْمُنكَرِ ۚ وَأُو۟لَٰٓئِكَ هُمُ ٱلْمُفْلِحُونَ",
+    translation: "And let there be [arising] from you a nation inviting to [all that is] good, enjoining what is right and forbidding what is wrong, and those will be the successful."
+  },
+  {
+    number: 398,
+    surah: 3,
+    numberInSurah: 105,
+    text: "وَلَا تَكُونُوا۟ كَٱلَّذِينَ تَفَرَّقُوا۟ وَٱخْتَلَفُوا۟ مِنۢ بَعْدِ مَا جَآءَهُمُ ٱلْبَيِّنَٰتُ ۚ وَأُو۟لَٰٓئِكَ لَهُمْ عَذَابٌ عَظِيمٌۭ",
+    translation: "And do not be like the ones who became divided and differed after the clear proofs had come to them. And those will have a great punishment."
+  },
+  {
+    number: 399,
+    surah: 3,
+    numberInSurah: 106,
+    text: "يَوْمَ تَبْيَضُّ وُجُوهٌۭ وَتَسْوَدُّ وُجُوهٌۭ ۚ فَأَمَّا ٱلَّذِينَ ٱسْوَدَّتْ وُجُوهُهُمْ أَكَفَرْتُم بَعْدَ إِيمَٰنِكُمْ فَذُوقُوا۟ ٱلْعَذَابَ بِمَا كُنتُمْ تَكْفُرُونَ",
+    translation: "On the Day [some] faces will turn white and [some] faces will turn black. As for those whose faces turn black, [to them it will be said], 'Did you disbelieve after your belief? Then taste the punishment for what you used to reject.'"
+  },
+  {
+    number: 400,
+    surah: 3,
+    numberInSurah: 107,
+    text: "وَأَمَّا ٱلَّذِينَ ٱبْيَضَّتْ وُجُوهُهُمْ فَفِى رَحْمَةِ ٱللَّهِ هُمْ فِيهَا خَٰلِدُونَ",
+    translation: "But as for those whose faces turn white, they will be within the mercy of Allah. They will abide therein eternally."
+  },
+  {
+    number: 401,
+    surah: 3,
+    numberInSurah: 108,
+    text: "تِلْكَ ءَايَٰتُ ٱللَّهِ نَتْلُوهَا عَلَيْكَ بِٱلْحَقِّ ۗ وَمَا ٱللَّهُ يُرِيدُ ظُلْمًا لِّلْعَٰلَمِينَ",
+    translation: "These are the verses of Allah. We recite them to you, [O Muhammad], in truth. And Allah wants no injustice to the worlds."
+  },
+  {
+    number: 402,
+    surah: 3,
+    numberInSurah: 109,
+    text: "وَلِلَّهِ مَا فِى ٱلسَّمَٰوَٰتِ وَمَا فِى ٱلْأَرْضِ ۚ وَإِلَى ٱللَّهِ تُرْجَعُ ٱلْأُمُورُ",
+    translation: "And to Allah belongs whatever is in the heavens and whatever is on the earth. And to Allah will [all] matters be returned."
+  },
+  {
+    number: 403,
+    surah: 3,
+    numberInSurah: 110,
+    text: "كُنتُمْ خَيْرَ أُمَّةٍ أُخْرِجَتْ لِلنَّاسِ تَأْمُرُونَ بِٱلْمَعْرُوفِ وَتَنْهَوْنَ عَنِ ٱلْمُنكَرِ وَتُؤْمِنُونَ بِٱللَّهِ ۗ وَلَوْ ءَامَنَ أَهْلُ ٱلْكِتَٰبِ لَكَانَ خَيْرًۭا لَّهُم ۚ مِّنْهُمُ ٱلْمُؤْمِنُونَ وَأَكْثَرُهُمُ ٱلْفَٰسِقُونَ",
+    translation: "You are the best nation produced [as an example] for mankind. You enjoin what is right and forbid what is wrong and believe in Allah. If only the People of the Scripture had believed, it would have been better for them. Among them are believers, but most of them are defiantly disobedient."
+  },
+  {
+    number: 404,
+    surah: 3,
+    numberInSurah: 111,
+    text: "لَن يَضُرُّوكُمْ إِلَّآ أَذًۭى ۖ وَإِن يُقَٰتِلُوكُمْ يُوَلُّوكُمُ ٱلْأَدْبَارَ ثُمَّ لَا يُنصَرُونَ",
+    translation: "They will not harm you except for [some] annoyance. And if they fight you, they will show you their backs; then they will not be aided."
+  },
+  {
+    number: 405,
+    surah: 3,
+    numberInSurah: 112,
+    text: "ضُرِبَتْ عَلَيْهِمُ ٱلذِّلَّةُ أَيْنَ مَا ثُقِفُوٓا۟ إِلَّآ بِحَبْلٍۢ مِّنَ ٱللَّهِ وَحَبْلٍۢ مِّنَ ٱلنَّاسِ وَبَآءُو بِغَضَبٍۢ مِّنَ ٱللَّهِ وَضُرِبَتْ عَلَيْهِمُ ٱلْمَسْكَنَةُ ۚ ذَٰلِكَ بِأَنَّهُمْ كَانُوا۟ يَكْفُرُونَ بِـَٔايَٰتِ ٱللَّهِ وَيَقْتُلُونَ ٱلْأَنۢبِيَآءَ بِغَيْرِ حَقٍّۢ ۗ ذَٰلِكَ بِمَا عَصَوا۟ وَّكَانُوا۟ يَعْتَدُونَ",
+    translation: "They have been put under humiliation wherever they are overtaken, except for a rope [covenant] from Allah and a rope [treaty] from the people. And they have drawn upon themselves anger from Allah and have been put under destitution. That is because they disbelieved in the verses of Allah and killed the prophets without right. That is because they disobeyed and [habitually] transgressed."
+  },
+  {
+    number: 406,
+    surah: 3,
+    numberInSurah: 113,
+    text: "لَيْسُوا۟ سَوَآءًۭ ۗ مِّنْ أَهْلِ ٱلْكِتَٰبِ أُمَّةٌۭ قَآئِمَةٌۭ يَتْلُونَ ءَايَٰتِ ٱللَّهِ ءَانَآءَ ٱلَّيْلِ وَهُمْ يَسْجُدُونَ",
+    translation: "They are not [all] the same; among the People of the Scripture is a community standing [in obedience], reciting the verses of Allah during periods of the night and prostrating [in prayer]."
+  },
+  {
+    number: 407,
+    surah: 3,
+    numberInSurah: 114,
+    text: "يُؤْمِنُونَ بِٱللَّهِ وَٱلْيَوْمِ ٱلْءَاخِرِ وَيَأْمُرُونَ بِٱلْمَعْرُوفِ وَيَنْهَوْنَ عَنِ ٱلْمُنكَرِ وَيُسَٰرِعُونَ فِى ٱلْخَيْرَٰتِ ۖ وَأُو۟لَٰٓئِكَ مِنَ ٱلصَّٰلِحِينَ",
+    translation: "They believe in Allah and the Last Day, and they enjoin what is right and forbid what is wrong and hasten to good deeds. And those are among the righteous."
+  },
+  {
+    number: 408,
+    surah: 3,
+    numberInSurah: 115,
+    text: "وَمَا يَفْعَلُوا۟ مِنْ خَيْرٍۢ فَلَن يُكْفَرُوهُ ۗ وَٱللَّهُ عَلِيمٌۢ بِٱلْمُتَّقِينَ",
+    translation: "And whatever good they do - never will it be removed from them. And Allah is Knowing of the righteous."
+  },
+  {
+    number: 409,
+    surah: 3,
+    numberInSurah: 116,
+    text: "إِنَّ ٱلَّذِينَ كَفَرُوا۟ لَن تُغْنِىَ عَنْهُمْ أَمْوَٰلُهُمْ وَلَآ أَوْلَٰدُهُم مِّنَ ٱللَّهِ شَيْـًۭا ۖ وَأُو۟لَٰٓئِكَ أَصْحَٰبُ ٱلنَّارِ ۚ هُمْ فِيهَا خَٰلِدُونَ",
+    translation: "Indeed, those who disbelieve - never will their wealth or their children avail them against Allah at all. And those are the companions of the Fire; they will abide therein eternally."
+  },
+  {
+    number: 410,
+    surah: 3,
+    numberInSurah: 117,
+    text: "مَثَلُ مَا يُنفِقُونَ فِى هَٰذِهِ ٱلْحَيَوٰةِ ٱلدُّنْيَا كَمَثَلِ رِيحٍۢ فِيهَا صِرٌّ أَصَابَتْ حَرْثَ قَوْمٍۢ ظَلَمُوٓا۟ أَنفُسَهُمْ فَأَهْلَكَتْهُ ۚ وَمَا ظَلَمَهُمُ ٱللَّهُ وَلَٰكِنْ أَنفُسَهُمْ يَظْلِمُونَ",
+    translation: "The example of what they spend in this worldly life is like that of a wind containing frost which strikes the harvest of a people who have wronged themselves and destroys it. And Allah has not wronged them, but they wrong themselves."
+  },
+  {
+    number: 411,
+    surah: 3,
+    numberInSurah: 118,
+    text: "يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ لَا تَتَّخِذُوا۟ بِطَانَةًۭ مِّن دُونِكُمْ لَا يَأْلُونَكُمْ خَبَالًۭا وَدُّوا۟ مَا عَنِتُّمْ قَدْ بَدَتِ ٱلْبَغْضَآءُ مِنْ أَفْوَٰهِهِمْ وَمَا تُخْفِى صُدُورُهُمْ أَكْبَرُ ۚ قَدْ بَيَّنَّا لَكُمُ ٱلْءَايَٰتِ إِن كُنتُمْ تَعْقِلُونَ",
+    translation: "O you who have believed, do not take as intimates those other than yourselves, for they will not spare you [any] ruin. They wish you would have hardship. Hatred has already appeared from their mouths, and what their breasts conceal is greater. We have certainly made clear to you the signs, if you will use reason."
+  },
+  {
+    number: 412,
+    surah: 3,
+    numberInSurah: 119,
+    text: "هَٰٓأَنتُمْ أُو۟لَآءِ تُحِبُّونَهُمْ وَلَا يُحِبُّونَكُمْ وَتُؤْمِنُونَ بِٱلْكِتَٰبِ كُلِّهِۦ وَإِذَا لَقُوكُمْ قَالُوٓا۟ ءَامَنَّا وَإِذَا خَلَوْا۟ عَضُّوا۟ عَلَيْكُمُ ٱلْأَنَامِلَ مِنَ ٱلْغَيْظِ ۚ قُلْ مُوتُوا۟ بِغَيْظِكُمْ ۗ إِنَّ ٱللَّهَ عَلِيمٌۢ بِذَاتِ ٱلصُّدُورِ",
+    translation: "Here you are loving them, but they are not loving you, while you believe in the Scripture - all of it. And when they meet you, they say, 'We believe.' But when they are alone, they bite their fingertips at you in rage. Say, 'Die in your rage. Indeed, Allah is Knowing of that within the breasts.'"
+  },
+  {
+    number: 413,
+    surah: 3,
+    numberInSurah: 120,
+    text: "إِن تَمْسَسْكُمْ حَسَنَةٌۭ تَسُؤْهُمْ وَإِن تُصِبْكُمْ سَيِّئَةٌۭ يَفْرَحُوا۟ بِهَا ۖ وَإِن تَصْبِرُوا۟ وَتَتَّقُوا۟ لَا يَضُرُّكُمْ كَيْدُهُمْ شَيْـًۭا ۗ إِنَّ ٱللَّهَ بِمَا يَعْمَلُونَ مُحِيطٌۭ",
+    translation: "If good touches you, it distresses them; but if harm strikes you, they rejoice at it. And if you are patient and fear Allah, their plot will not harm you at all. Indeed, Allah is encompassing of what they do."
+  },
+  {
+    number: 414,
+    surah: 3,
+    numberInSurah: 121,
+    text: "وَإِذْ غَدَوْتَ مِنْ أَهْلِكَ تُبَوِّئُ ٱلْمُؤْمِنِينَ مَقَٰعِدَ لِلْقِتَالِ ۗ وَٱللَّهُ سَمِيعٌ عَلِيمٌ",
+    translation: "And [remember] when you, [O Muhammad], left your family in the morning to post the believers at their stations for the battle. And Allah is Hearing and Knowing."
+  },
+  {
+    number: 415,
+    surah: 3,
+    numberInSurah: 122,
+    text: "إِذْ هَمَّت طَّآئِفَتَانِ مِنكُمْ أَن تَفْشَلَا وَٱللَّهُ وَلِيُّهُمَا ۗ وَعَلَى ٱللَّهِ فَلْيَتَوَكَّلِ ٱلْمُؤْمِنُونَ",
+    translation: "When two parties among you were about to lose courage, but Allah was their ally; and upon Allah the believers should rely."
+  },
+  {
+    number: 416,
+    surah: 3,
+    numberInSurah: 123,
+    text: "وَلَقَدْ نَصَرَكُمُ ٱللَّهُ بِبَدْرٍۢ وَأَنتُمْ أَذِلَّةٌۭ ۖ فَٱتَّقُوا۟ ٱللَّهَ لَعَلَّكُمْ تَشْكُرُونَ",
+    translation: "And Allah had already given you victory at [the battle of] Badr while you were few in number. Then fear Allah; perhaps you will be grateful."
+  },
+  {
+    number: 417,
+    surah: 3,
+    numberInSurah: 124,
+    text: "إِذْ تَقُولُ لِلْمُؤْمِنِينَ أَلَن يَكْفِيَكُمْ أَن يُمِدَّكُمْ رَبُّكُم بِثَلَٰثَةِ ءَآلَٰفٍۢ مِّنَ ٱلْمَلَـٰٓئِكَةِ مُنزَلِينَ",
+    translation: "[Remember] when you said to the believers, 'Is it not sufficient for you that your Lord should reinforce you with three thousand angels sent down?'"
+  },
+  {
+    number: 418,
+    surah: 3,
+    numberInSurah: 125,
+    text: "بَلَىٰٓ ۚ إِن تَصْبِرُوا۟ وَتَتَّقُوا۟ وَيَأْتُوكُم مِّن فَوْرِهِمْ هَٰذَا يُمْدِدْكُمْ رَبُّكُم بِخَمْسَةِ ءَآلَٰفٍۢ مِّنَ ٱلْمَلَـٰٓئِكَةِ مُسَوِّمِينَ",
+    translation: "Yes, if you remain patient and conscious of Allah and the enemy come upon you [attacking] in rage, your Lord will reinforce you with five thousand angels having marks [of distinction]."
+  },
+  {
+    number: 419,
+    surah: 3,
+    numberInSurah: 126,
+    text: "وَمَا جَعَلَهُ ٱللَّهُ إِلَّا بُشْرَىٰ لَكُمْ وَلِتَطْمَئِنَّ قُلُوبُكُم بِهِۦ ۗ وَمَا ٱلنَّصْرُ إِلَّا مِنْ عِندِ ٱللَّهِ ٱلْعَزِيزِ ٱلْحَكِيمِ",
+    translation: "And Allah made it not but good tidings for you and so that your hearts would be assured thereby. And victory is not but from Allah, the Exalted in Might, the Wise."
+  },
+  {
+    number: 420,
+    surah: 3,
+    numberInSurah: 127,
+    text: "لِيَقْطَعَ طَرَفًۭا مِّنَ ٱلَّذِينَ كَفَرُوٓا۟ أَوْ يَكْبِتَهُمْ فَيَنقَلِبُوا۟ خَآئِبِينَ",
+    translation: "That He might cut down a section of the disbelievers or suppress them so that they turn back disappointed."
+  },
+  {
+    number: 421,
+    surah: 3,
+    numberInSurah: 128,
+    text: "لَيْسَ لَكَ مِنَ ٱلْأَمْرِ شَىْءٌ أَوْ يَتُوبَ عَلَيْهِمْ أَوْ يُعَذِّبَهُمْ فَإِنَّهُمْ ظَٰلِمُونَ",
+    translation: "Not for you, [O Muhammad, but for Allah], is the decision whether He should [cut them down] or forgive them or punish them, for indeed, they are wrongdoers."
+  },
+  {
+    number: 422,
+    surah: 3,
+    numberInSurah: 129,
+    text: "وَلِلَّهِ مَا فِى ٱلسَّمَٰوَٰتِ وَمَا فِى ٱلْأَرْضِ ۚ يَغْفِرُ لِمَن يَشَآءُ وَيُعَذِّبُ مَن يَشَآءُ ۚ وَٱللَّهُ غَفُورٌۭ رَّحِيمٌۭ",
+    translation: "And to Allah belongs whatever is in the heavens and whatever is on the earth. He forgives whom He wills and punishes whom He wills. And Allah is Forgiving and Merciful."
+  },
+  {
+    number: 423,
+    surah: 3,
+    numberInSurah: 130,
+    text: "يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ لَا تَأْكُلُوا۟ ٱلرِّبَوٰٓا۟ أَضْعَٰفًۭا مُّضَٰعَفَةًۭ ۖ وَٱتَّقُوا۟ ٱللَّهَ لَعَلَّكُمْ تُفْلِحُونَ",
+    translation: "O you who have believed, do not consume usury, doubled and multiplied, but fear Allah that you may be successful."
+  },  
+  {
+    number: 424,
+    surah: 3,
+    numberInSurah: 131,
+    text: "وَٱتَّقُوا۟ ٱلنَّارَ ٱلَّتِىٓ أُعِدَّتْ لِلْكَٰفِرِينَ",
+    translation: "And fear the Fire, which has been prepared for the disbelievers."
+  },
+  {
+    number: 425,
+    surah: 3,
+    numberInSurah: 132,
+    text: "وَأَطِيعُوا۟ ٱللَّهَ وَٱلرَّسُولَ لَعَلَّكُمْ تُرْحَمُونَ",
+    translation: "And obey Allah and the Messenger that you may obtain mercy."
+  },
+  {
+    number: 426,
+    surah: 3,
+    numberInSurah: 133,
+    text: "وَسَارِعُوٓا۟ إِلَىٰ مَغْفِرَةٍۢ مِّن رَّبِّكُمْ وَجَنَّةٍ عَرْضُهَا ٱلسَّمَٰوَٰتُ وَٱلْأَرْضُ أُعِدَّتْ لِلْمُتَّقِينَ",
+    translation: "And hasten to forgiveness from your Lord and a garden as wide as the heavens and earth, prepared for the righteous."
+  },
+  {
+    number: 427,
+    surah: 3,
+    numberInSurah: 134,
+    text: "ٱلَّذِينَ يُنفِقُونَ فِى ٱلسَّرَّآءِ وَٱلضَّرَّآءِ وَٱلْكَٰظِمِينَ ٱلْغَيْظَ وَٱلْعَافِينَ عَنِ ٱلنَّاسِ ۗ وَٱللَّهُ يُحِبُّ ٱلْمُحْسِنِينَ",
+    translation: "Who spend [in the cause of Allah] during ease and hardship and who restrain anger and who pardon the people - and Allah loves the doers of good."
+  },
+  {
+    number: 428,
+    surah: 3,
+    numberInSurah: 135,
+    text: "وَٱلَّذِينَ إِذَا فَعَلُوا۟ فَـٰحِشَةً أَوْ ظَلَمُوٓا۟ أَنفُسَهُمْ ذَكَرُوا۟ ٱللَّهَ فَٱسْتَغْفَرُوا۟ لِذُنُوبِهِمْ ۖ وَمَن يَغْفِرُ ٱلذُّنُوبَ إِلَّا ٱللَّهُ وَلَمْ يُصِرُّوا۟ عَلَىٰ مَا فَعَلُوا۟ وَهُمْ يَعْلَمُونَ",
+    translation: "And those who, when they commit an immorality or wrong themselves [by transgression], remember Allah and seek forgiveness for their sins - and who can forgive sins except Allah? - and [who] do not persist in what they have done while they know."
+  },
+  {
+    number: 429,
+    surah: 3,
+    numberInSurah: 136,
+    text: "أُو۟لَٰٓئِكَ جَزَآؤُهُم مَّغْفِرَةٌۭ مِّن رَّبِّهِمْ وَجَنَّٰتٌۭ تَجْرِى مِن تَحْتِهَا ٱلْأَنْهَٰرُ خَٰلِدِينَ فِيهَا ۚ وَنِعْمَ أَجْرُ ٱلْعَٰمِلِينَ",
+    translation: "Those - their reward is forgiveness from their Lord and gardens beneath which rivers flow [in Paradise], wherein they will abide eternally; and excellent is the reward of the [righteous] workers."
+  },
+  {
+    number: 430,
+    surah: 3,
+    numberInSurah: 137,
+    text: "قَدْ خَلَتْ مِن قَبْلِكُمْ سُنَنٌۭ فَسِيرُوا۟ فِى ٱلْأَرْضِ فَٱنظُرُوا۟ كَيْفَ كَانَ عَٰقِبَةُ ٱلْمُكَذِّبِينَ",
+    translation: "Similar situations [as yours] have passed on before you, so proceed throughout the earth and observe how was the end of those who denied."
+  },
+  {
+    number: 431,
+    surah: 3,
+    numberInSurah: 138,
+    text: "هَٰذَا بَيَانٌۭ لِّلنَّاسِ وَهُدًۭى وَمَوْعِظَةٌۭ لِّلْمُتَّقِينَ",
+    translation: "This [Qur'an] is a clear statement to [all] the people and a guidance and instruction for those conscious of Allah."
+  },
+  {
+    number: 432,
+    surah: 3,
+    numberInSurah: 139,
+    text: "وَلَا تَهِنُوا۟ وَلَا تَحْزَنُوا۟ وَأَنتُمُ ٱلْأَعْلَوْنَ إِن كُنتُم مُّؤْمِنِينَ",
+    translation: "So do not weaken and do not grieve, and you will be superior if you are [true] believers."
+  },
+  {
+    number: 433,
+    surah: 3,
+    numberInSurah: 140,
+    text: "إِن يَمْسَسْكُمْ قَرْحٌۭ فَقَدْ مَسَّ ٱلْقَوْمَ قَرْحٌۭ مِّثْلُهُۥ ۚ وَتِلْكَ ٱلْأَيَّامُ نُدَاوِلُهَا بَيْنَ ٱلنَّاسِ وَلِيَعْلَمَ ٱللَّهُ ٱلَّذِينَ ءَامَنُوا۟ وَيَتَّخِذَ مِنكُمْ شُهَدَآءَ ۗ وَٱللَّهُ لَا يُحِبُّ ٱلظَّٰلِمِينَ",
+    translation: "If a wound should touch you - there has already touched the [opposing] people a wound similar to it. And these days [of varying conditions] We alternate among the people so that Allah may make evident those who believe and [may] take to Himself from among you martyrs - and Allah does not like the wrongdoers."
+  },  
+  {
+    number: 434,
+    surah: 3,
+    numberInSurah: 141,
+    text: "وَلِيُمَحِّصَ ٱللَّهُ ٱلَّذِينَ ءَامَنُوا۟ وَيَمْحَقَ ٱلْكَٰفِرِينَ",
+    translation: "And that Allah may purify the believers [through trials] and destroy the disbelievers."
+  },
+  {
+    number: 435,
+    surah: 3,
+    numberInSurah: 142,
+    text: "أَمْ حَسِبْتُمْ أَن تَدْخُلُوا۟ ٱلْجَنَّةَ وَلَمَّا يَعْلَمِ ٱللَّهُ ٱلَّذِينَ جَٰهَدُوا۟ مِنكُمْ وَيَعْلَمَ ٱلصَّـٰبِرِينَ",
+    translation: "Or do you think that you will enter Paradise while Allah has not yet made evident those of you who fight in His cause and made evident those who are steadfast?"
+  },
+  {
+    number: 436,
+    surah: 3,
+    numberInSurah: 143,
+    text: "وَلَقَدْ كُنتُمْ تَمَنَّوْنَ ٱلْمَوْتَ مِن قَبْلِ أَن تَلْقَوْهُ فَقَدْ رَأَيْتُمُوهُ وَأَنتُمْ تَنظُرُونَ",
+    translation: "And you had certainly wished for martyrdom before you encountered it, and you have [now] seen it [before you] while you were looking on."
+  },
+  {
+    number: 437,
+    surah: 3,
+    numberInSurah: 144,
+    text: "وَمَا مُحَمَّدٌ إِلَّا رَسُولٌۭ قَدْ خَلَتْ مِن قَبْلِهِ ٱلرُّسُلُ ۚ أَفَإِيْن مَّاتَ أَوْ قُتِلَ ٱنقَلَبْتُمْ عَلَىٰٓ أَعْقَٰبِكُمْ ۚ وَمَن يَنقَلِبْ عَلَىٰ عَقِبَيْهِ فَلَن يَضُرَّ ٱللَّهَ شَيْـًۭا ۗ وَسَيَجْزِى ٱللَّهُ ٱلشَّـٰكِرِينَ",
+    translation: "Muhammad is not but a messenger. [Other] messengers have passed on before him. So if he was to die or be killed, would you turn back on your heels [to unbelief]? And he who turns back on his heels will never harm Allah at all; but Allah will reward the grateful."
+  },
+  {
+    number: 438,
+    surah: 3,
+    numberInSurah: 145,
+    text: "وَمَا كَانَ لِنَفْسٍ أَن تَمُوتَ إِلَّا بِإِذْنِ ٱللَّهِ كِتَٰبًۭا مُّؤَجَّلًۭا ۗ وَمَن يُرِدْ ثَوَابَ ٱلدُّنْيَا نُؤْتِهِۦ مِنْهَا وَمَن يُرِدْ ثَوَابَ ٱلْءَاخِرَةِ نُؤْتِهِۦ مِنْهَا ۚ وَسَنَجْزِى ٱلشَّـٰكِرِينَ",
+    translation: "And it is not [possible] for one to die except by permission of Allah at a decree determined. And whoever desires the reward of this world - We will give him thereof; and whoever desires the reward of the Hereafter - We will give him thereof. And We will reward the grateful."
+  },
+  {
+    number: 439,
+    surah: 3,
+    numberInSurah: 146,
+    text: "وَكَأَيِّن مِّن نَّبِىٍّۢ قَٰتَلَ مَعَهُۥ رِبِّيُّونَ كَثِيرٌۭ فَمَا وَهَنُوا۟ لِمَآ أَصَابَهُمْ فِى سَبِيلِ ٱللَّهِ وَمَا ضَعُفُوا۟ وَمَا ٱسْتَكَانُوا۟ ۗ وَٱللَّهُ يُحِبُّ ٱلصَّـٰبِرِينَ",
+    translation: "And how many a prophet [fought and] with him fought many religious scholars. But they never lost assurance due to what afflicted them in the cause of Allah, nor did they weaken or submit. And Allah loves the steadfast."
+  },
+  {
+    number: 440,
+    surah: 3,
+    numberInSurah: 147,
+    text: "وَمَا كَانَ قَوْلَهُمْ إِلَّآ أَن قَالُوا۟ رَبَّنَا ٱغْفِرْ لَنَا ذُنُوبَنَا وَإِسْرَافَنَا فِىٓ أَمْرِنَا وَثَبِّتْ أَقْدَامَنَا وَٱنصُرْنَا عَلَى ٱلْقَوْمِ ٱلْكَٰفِرِينَ",
+    translation: "And their words were not but that they said, 'Our Lord, forgive us our sins and the excess [committed] in our affairs and plant firmly our feet and give us victory over the disbelieving people.'"
+  },
+  {
+    number: 441,
+    surah: 3,
+    numberInSurah: 148,
+    text: "فَـَٔاتَىٰهُمُ ٱللَّهُ ثَوَابَ ٱلدُّنْيَا وَحُسْنَ ثَوَابِ ٱلْءَاخِرَةِ ۗ وَٱللَّهُ يُحِبُّ ٱلْمُحْسِنِينَ",
+    translation: "So Allah gave them the reward of this world and the good reward of the Hereafter. And Allah loves the doers of good."
+  },
+  {
+    number: 442,
+    surah: 3,
+    numberInSurah: 149,
+    text: "يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓا۟ إِن تُطِيعُوا۟ ٱلَّذِينَ كَفَرُوا۟ يَرُدُّوكُمْ عَلَىٰٓ أَعْقَٰبِكُمْ فَتَنقَلِبُوا۟ خَٰسِرِينَ",
+    translation: "O you who have believed, if you obey those who disbelieve, they will turn you back on your heels, and you will [then] become losers."
+  },
+  {
+    number: 443,
+    surah: 3,
+    numberInSurah: 150,
+    text: "بَلِ ٱللَّهُ مَوْلَىٰكُمْ ۖ وَهُوَ خَيْرُ ٱلنَّـٰصِرِينَ",
+    translation: "But Allah is your protector, and He is the best of helpers."
+  },  
+  {
+    number: 444,
+    surah: 3,
+    numberInSurah: 151,
+    text: "سَنُلْقِى فِى قُلُوبِ ٱلَّذِينَ كَفَرُوا۟ ٱلرُّعْبَ بِمَآ أَشْرَكُوا۟ بِٱللَّهِ مَا لَمْ يُنَزِّلْ بِهِۦ سُلْطَٰنًۭا ۖ وَمَأْوَىٰهُمُ ٱلنَّارُ ۚ وَبِئْسَ مَثْوَى ٱلظَّـٰلِمِينَ",
+    translation: "We will cast terror into the hearts of those who disbelieve for what they have associated with Allah of which He had not sent down [any] authority. And their refuge will be the Fire, and wretched is the residence of the wrongdoers."
+  },
+  {
+    number: 445,
+    surah: 3,
+    numberInSurah: 152,
+    text: "وَلَقَدْ صَدَقَكُمُ ٱللَّهُ وَعْدَهُۥٓ إِذْ تَحُسُّونَهُم بِإِذْنِهِۦ ۖ حَتَّىٰٓ إِذَا فَشِلْتُمْ وَتَنَٰزَعْتُمْ فِى ٱلْأَمْرِ وَعَصَيْتُم مِّنۢ بَعْدِ مَآ أَرَىٰكُم مَّا تُحِبُّونَ ۚ مِنكُم مَّن يُرِيدُ ٱلدُّنْيَا وَمِنكُم مَّن يُرِيدُ ٱلْءَاخِرَةَ ۚ ثُمَّ صَرَفَكُمْ عَنْهُمْ لِيَبْتَلِيَكُمْ ۖ وَلَقَدْ عَفَا عَنكُمْ ۗ وَٱللَّهُ ذُو فَضْلٍ عَلَى ٱلْمُؤْمِنِينَ",
+    translation: "And Allah had certainly fulfilled His promise to you when you were killing the enemy by His permission until [the time] when you lost courage and fell to disputing about the order [given by the Prophet] and disobeyed after He had shown you that which you love. Among you are some who desire this world, and among you are some who desire the Hereafter. Then He turned you back from them [defeated] that He might test you. And He has already forgiven you, and Allah is the possessor of bounty for the believers."
+  },
+  {
+    number: 446,
+    surah: 3,
+    numberInSurah: 153,
+    text: "إِذْ تُصْعِدُونَ وَلَا تَلْوُۥنَ عَلَىٰٓ أَحَدٍۢ وَٱلرَّسُولُ يَدْعُوكُمْ فِىٓ أُخْرَىٰكُمْ فَأَثَٰبَكُمْ غَمًّۢا بِغَمٍّۢ لِّكَيْلَا تَحْزَنُوا۟ عَلَىٰ مَا فَاتَكُمْ وَلَا مَآ أَصَٰبَكُمْ ۗ وَٱللَّهُ خَبِيرٌۢ بِمَا تَعْمَلُونَ",
+    translation: "[Remember] when you fled and climbed [the mountain] without looking aside at anyone while the Messenger was calling you from behind. So Allah repaid you with distress upon distress so you would not grieve for that which had escaped you or [for] that which had befallen you. And Allah is [fully] Acquainted with what you do."
+  },
+  {
+    number: 447,
+    surah: 3,
+    numberInSurah: 154,
+    text: "ثُمَّ أَنزَلَ عَلَيْكُم مِّنۢ بَعْدِ ٱلْغَمِّ أَمَنَةًۭ نُّعَاسًۭا يَغْشَىٰ طَآئِفَةًۭ مِّنكُمْ ۖ وَطَآئِفَةٌۭ قَدْ أَهَمَّتْهُمْ أَنفُسُهُمْ يَظُنُّونَ بِٱللَّهِ غَيْرَ ٱلْحَقِّ ظَنَّ ٱلْجَٰهِلِيَّةِ ۖ يَقُولُونَ هَل لَّنَا مِنَ ٱلْأَمْرِ مِن شَىْءٍۢ ۗ قُلْ إِنَّ ٱلْأَمْرَ كُلَّهُۥ لِلَّهِ ۗ يُخْفُونَ فِىٓ أَنفُسِهِم مَّا لَا يُبْدُونَ لَكَ ۖ يَقُولُونَ لَوْ كَانَ لَنَا مِنَ ٱلْأَمْرِ شَىْءٌۭ مَّا قُتِلْنَا هَٰهُنَا ۗ قُل لَّوْ كُنتُمْ فِى بُيُوتِكُمْ لَبَرَزَ ٱلَّذِينَ كُتِبَ عَلَيْهِمُ ٱلْقَتْلُ إِلَىٰ مَضَاجِعِهِمْ ۖ وَلِيَبْتَلِىَ ٱللَّهُ مَا فِى صُدُورِكُمْ وَلِيُمَحِّصَ مَا فِى قُلُوبِكُمْ ۗ وَٱللَّهُ عَلِيمٌۢ بِذَاتِ ٱلصُّدُورِ",
+    translation: "Then after distress, He sent down upon you security [in the form of] drowsiness, overcoming a faction of you, while another faction worried about themselves, thinking of Allah other than the truth - the thought of ignorance, saying, 'Is there anything for us [to have done] in this matter?' Say, 'Indeed, the matter belongs completely to Allah.' They conceal within themselves what they will not reveal to you. They say, 'If there was anything we could have done in the matter, some of us would not have been killed right here.' Say, 'Even if you had been inside your houses, those decreed to be killed would have come out to their death beds.' [It was] so that Allah might test what is in your breasts and purify what is in your hearts. And Allah is Knowing of that within the breasts."
+  },
+  {
+    number: 448,
+    surah: 3,
+    numberInSurah: 155,
+    text: "إِنَّ ٱلَّذِينَ تَوَلَّوْا۟ مِنكُمْ يَوْمَ ٱلْتَقَى ٱلْجَمْعَانِ إِنَّمَا ٱسْتَزَلَّهُمُ ٱلشَّيْطَٰنُ بِبَعْضِ مَا كَسَبُوا۟ ۖ وَلَقَدْ عَفَا ٱللَّهُ عَنْهُمْ ۗ إِنَّ ٱللَّهَ غَفُورٌ حَلِيمٌۭ",
+    translation: "Indeed, those of you who turned back on the day the two armies met, it was Satan who caused them to slip because of some [blame] they had earned. But Allah has already forgiven them. Indeed, Allah is Forgiving and Forbearing."
+  },
+  {
+    number: 449,
+    surah: 3,
+    numberInSurah: 156,
+    text: "يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ لَا تَكُونُوا۟ كَٱلَّذِينَ كَفَرُوا۟ وَقَالُوا۟ لِإِخْوَٰنِهِمْ إِذَا ضَرَبُوا۟ فِى ٱلْأَرْضِ أَوْ كَانُوا۟ غُزًّۭى لَّوْ كَانُوا۟ عِندَنَا مَا مَاتُوا۟ وَمَا قُتِلُوا۟ لِيَجْعَلَ ٱللَّهُ ذَٰلِكَ حَسْرَةًۭ فِى قُلُوبِهِمْ ۗ وَٱللَّهُ يُحْىِۦ وَيُمِيتُ ۗ وَٱللَّهُ بِمَا تَعْمَلُونَ بَصِيرٌۭ",
+    translation: "O you who have believed, do not be like those who disbelieved and said about their brothers when they traveled through the land or went out to fight, 'If they had been with us, they would not have died or have been killed,' so Allah makes that [misconception] a regret within their hearts. And it is Allah who gives life and causes death, and Allah is Seeing of what you do."
+  },
+  {
+    number: 450,
+    surah: 3,
+    numberInSurah: 157,
+    text: "وَلَئِن قُتِلْتُمْ فِى سَبِيلِ ٱللَّهِ أَوْ مُتُّمْ لَمَغْفِرَةٌۭ مِّنَ ٱللَّهِ وَرَحْمَةٌ خَيْرٌۭ مِّمَّا يَجْمَعُونَ",
+    translation: "And if you are killed in the cause of Allah or die - then forgiveness from Allah and mercy are better than whatever they accumulate [in this world]."
+  },
+  {
+    number: 451,
+    surah: 3,
+    numberInSurah: 158,
+    text: "وَلَئِن مُّتُّمْ أَوْ قُتِلْتُمْ لَإِلَى ٱللَّهِ تُحْشَرُونَ",
+    translation: "And whether you die or are killed, unto Allah you will be gathered."
+  },  
+  {
+    number: 452,
+    surah: 3,
+    numberInSurah: 159,
+    text: "فَبِمَا رَحْمَةٍۢ مِّنَ ٱللَّهِ لِنتَ لَهُمْ ۖ وَلَوْ كُنتَ فَظًّۭا غَلِيظَ ٱلْقَلْبِ لَٱنفَضُّوا۟ مِنْ حَوْلِكَ ۖ فَٱعْفُ عَنْهُمْ وَٱسْتَغْفِرْ لَهُمْ وَشَاوِرْهُمْ فِى ٱلْأَمْرِ ۖ فَإِذَا عَزَمْتَ فَتَوَكَّلْ عَلَى ٱللَّهِ ۚ إِنَّ ٱللَّهَ يُحِبُّ ٱلْمُتَوَكِّلِينَ",
+    translation: "So by mercy from Allah, [O Muhammad], you were lenient with them. And if you had been rude [in speech] and harsh in heart, they would have disbanded from about you. So pardon them and ask forgiveness for them and consult them in the matter. And when you have decided, then rely upon Allah. Indeed, Allah loves those who rely [upon Him]."
+  },
+  {
+    number: 453,
+    surah: 3,
+    numberInSurah: 160,
+    text: "إِن يَنصُرْكُمُ ٱللَّهُ فَلَا غَٰلِبَ لَكُمْ ۖ وَإِن يَخْذُلْكُمْ فَمَن ذَا ٱلَّذِى يَنصُرُكُم مِّنۢ بَعْدِهِۦ ۗ وَعَلَى ٱللَّهِ فَلْيَتَوَكَّلِ ٱلْمُؤْمِنُونَ",
+    translation: "If Allah should aid you, no one can overcome you; but if He should forsake you, who is there that can aid you after Him? And upon Allah let the believers rely."
+  },
+  {
+    number: 454,
+    surah: 3,
+    numberInSurah: 161,
+    text: "وَمَا كَانَ لِنَبِىٍّ أَن يَغُلَّ ۚ وَمَن يَغْلُلْ يَأْتِ بِمَا غَلَّ يَوْمَ ٱلْقِيَٰمَةِ ۚ ثُمَّ تُوَفَّىٰ كُلُّ نَفْسٍۢ مَّا كَسَبَتْ وَهُمْ لَا يُظْلَمُونَ",
+    translation: "It is not [attributable] to a prophet that he would act unfaithfully [in regard to war booty]. And whoever betrays, [taking unlawfully], will come with what he took on the Day of Resurrection. Then will every soul be [fully] compensated for what it earned, and they will not be wronged."
+  },
+  {
+    number: 455,
+    surah: 3,
+    numberInSurah: 162,
+    text: "أَفَمَنِ ٱتَّبَعَ رِضْوَٰنَ ٱللَّهِ كَمَنۢ بَآءَ بِسَخَطٍۢ مِّنَ ٱللَّهِ وَمَأْوَىٰهُ جَهَنَّمُ ۚ وَبِئْسَ ٱلْمَصِيرُ",
+    translation: "So is one who pursues the pleasure of Allah like one who brings upon himself the anger of Allah and whose refuge is Hell? And wretched is the destination."
+  },
+  {
+    number: 456,
+    surah: 3,
+    numberInSurah: 163,
+    text: "هُمْ دَرَجَٰتٌ عِندَ ٱللَّهِ ۗ وَٱللَّهُ بَصِيرٌۢ بِمَا يَعْمَلُونَ",
+    translation: "They are [varying] degrees in the sight of Allah, and Allah is Seeing of whatever they do."
+  },
+  {
+    number: 457,
+    surah: 3,
+    numberInSurah: 164,
+    text: "لَقَدْ مَنَّ ٱللَّهُ عَلَى ٱلْمُؤْمِنِينَ إِذْ بَعَثَ فِيهِمْ رَسُولًۭا مِّنْ أَنفُسِهِمْ يَتْلُوا۟ عَلَيْهِمْ ءَايَٰتِهِۦ وَيُزَكِّيهِمْ وَيُعَلِّمُهُمُ ٱلْكِتَٰبَ وَٱلْحِكْمَةَ وَإِن كَانُوا۟ مِن قَبْلُ لَفِى ضَلَٰلٍۢ مُّبِينٍۢ",
+    translation: "Certainly did Allah confer [great] favor upon the believers when He sent among them a Messenger from themselves, reciting to them His verses and purifying them and teaching them the Book and wisdom, although they had been before in manifest error."
+  },
+  {
+    number: 458,
+    surah: 3,
+    numberInSurah: 165,
+    text: "أَوَلَمَّآ أَصَٰبَتْكُم مُّصِيبَةٌۭ قَدْ أَصَبْتُم مِّثْلَيْهَا قُلْتُمْ أَنَّىٰ هَٰذَا ۖ قُلْ هُوَ مِنْ عِندِ أَنفُسِكُمْ ۗ إِنَّ ٱللَّهَ عَلَىٰ كُلِّ شَىْءٍۢ قَدِيرٌۭ",
+    translation: "Why [is it that] when a [single] disaster struck you, although you had struck [the enemy in the battle of Badr] with one twice as great, you said, 'From where is this?' Say, 'It is from yourselves.' Indeed, Allah is over all things competent."
+  },
+  {
+    number: 459,
+    surah: 3,
+    numberInSurah: 166,
+    text: "وَمَآ أَصَٰبَكُمْ يَوْمَ ٱلْتَقَى ٱلْجَمْعَانِ فَبِإِذْنِ ٱللَّهِ وَلِيَعْلَمَ ٱلْمُؤْمِنِينَ",
+    translation: "And what struck you on the day the two armies met was by permission of Allah that He might make evident the [true] believers."
+  },
+  {
+    number: 460,
+    surah: 3,
+    numberInSurah: 167,
+    text: "وَلِيَعْلَمَ ٱلَّذِينَ نَافَقُوا۟ ۚ وَقِيلَ لَهُمْ تَعَالَوْا۟ قَٰتِلُوا۟ فِى سَبِيلِ ٱللَّهِ أَوِ ٱدْفَعُوا۟ ۖ قَالُوا۟ لَوْ نَعْلَمُ قِتَالًۭا لَّٱتَّبَعْنَٰكُمْ ۗ هُمْ لِلْكُفْرِ يَوْمَئِذٍ أَقْرَبُ مِنْهُمْ لِلْإِيمَٰنِ ۚ يَقُولُونَ بِأَفْوَٰهِهِم مَّا لَيْسَ فِى قُلُوبِهِمْ ۗ وَٱللَّهُ أَعْلَمُ بِمَا يَكْتُمُونَ",
+    translation: "And that He might make evident those who are hypocrites. For it was said to them, 'Come, fight in the way of Allah or [at least] defend.' They said, 'If we had known [there would be] fighting, we would have followed you.' They were nearer to disbelief that day than to faith, saying with their mouths what was not within their hearts. And Allah is most Knowing of what they conceal."
+  },
+  {
+    number: 461,
+    surah: 3,
+    numberInSurah: 168,
+    text: "ٱلَّذِينَ قَالُوا۟ لِإِخْوَٰنِهِمْ وَقَعَدُوا۟ لَوْ أَطَاعُونَا مَا قُتِلُوا۟ ۗ قُلْ فَٱدْرَءُوا۟ عَنْ أَنفُسِكُمُ ٱلْمَوْتَ إِن كُنتُمْ صَٰدِقِينَ",
+    translation: "Those who said about their brothers while sitting [at home], 'If they had obeyed us, they would not have been killed.' Say, 'Then prevent death from yourselves, if you should be truthful.'"
+  },  
+  {
+    number: 462,
+    surah: 3,
+    numberInSurah: 169,
+    text: "وَلَا تَحْسَبَنَّ ٱلَّذِينَ قُتِلُوا۟ فِى سَبِيلِ ٱللَّهِ أَمْوَٰتًۭا ۚ بَلْ أَحْيَآءٌ عِندَ رَبِّهِمْ يُرْزَقُونَ",
+    translation: "And never think of those who have been killed in the cause of Allah as dead. Rather, they are alive with their Lord, receiving provision."
+  },
+  {
+    number: 463,
+    surah: 3,
+    numberInSurah: 170,
+    text: "فَرِحِينَ بِمَآ ءَاتَىٰهُمُ ٱللَّهُ مِن فَضْلِهِۦ وَيَسْتَبْشِرُونَ بِٱلَّذِينَ لَمْ يَلْحَقُوا۟ بِهِم مِّنْ خَلْفِهِمْ أَلَّا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ",
+    translation: "Rejoicing in what Allah has bestowed upon them of His bounty, and they receive good tidings about those [to be martyred] after them who have not yet joined them - that there will be no fear concerning them, nor will they grieve."
+  },
+  {
+    number: 464,
+    surah: 3,
+    numberInSurah: 171,
+    text: "يَسْتَبْشِرُونَ بِنِعْمَةٍۢ مِّنَ ٱللَّهِ وَفَضْلٍۢ وَأَنَّ ٱللَّهَ لَا يُضِيعُ أَجْرَ ٱلْمُؤْمِنِينَ",
+    translation: "They receive good tidings of favor from Allah and bounty and [of the fact] that Allah does not allow the reward of believers to be lost."
+  },
+  {
+    number: 465,
+    surah: 3,
+    numberInSurah: 172,
+    text: "ٱلَّذِينَ ٱسْتَجَابُوا۟ لِلَّهِ وَٱلرَّسُولِ مِنۢ بَعْدِ مَآ أَصَابَهُمُ ٱلْقَرْحُ ۚ لِلَّذِينَ أَحْسَنُوا۟ مِنْهُمْ وَٱتَّقَوْا۟ أَجْرٌ عَظِيمٌ",
+    translation: "Those [believers] who responded to Allah and the Messenger after injury had struck them. For those who did good among them and feared Allah is a great reward."
+  },
+  {
+    number: 466,
+    surah: 3,
+    numberInSurah: 173,
+    text: "ٱلَّذِينَ قَالَ لَهُمُ ٱلنَّاسُ إِنَّ ٱلنَّاسَ قَدْ جَمَعُوا۟ لَكُمْ فَٱخْشَوْهُمْ فَزَادَهُمْ إِيمَٰنًۭا وَقَالُوا۟ حَسْبُنَا ٱللَّهُ وَنِعْمَ ٱلْوَكِيلُ",
+    translation: "Those to whom hypocrites said, 'Indeed, the people have gathered against you, so fear them.' But it [merely] increased them in faith, and they said, 'Sufficient for us is Allah, and [He is] the best Disposer of affairs.'"
+  },
+  {
+    number: 467,
+    surah: 3,
+    numberInSurah: 174,
+    text: "فَٱنقَلَبُوا۟ بِنِعْمَةٍۢ مِّنَ ٱللَّهِ وَفَضْلٍۢ لَّمْ يَمْسَسْهُمْ سُوٓءٌۭ وَٱتَّبَعُوا۟ رِضْوَٰنَ ٱللَّهِ ۗ وَٱللَّهُ ذُو فَضْلٍ عَظِيمٍ",
+    translation: "So they returned with favor from Allah and bounty, no harm having touched them. And they pursued the pleasure of Allah, and Allah is the possessor of great bounty."
+  },
+  {
+    number: 468,
+    surah: 3,
+    numberInSurah: 175,
+    text: "إِنَّمَا ذَٰلِكُمُ ٱلشَّيْطَٰنُ يُخَوِّفُ أَوْلِيَآءَهُۥ ۚ فَلَا تَخَافُوهُمْ وَخَافُونِ إِن كُنتُم مُّؤْمِنِينَ",
+    translation: "That is only Satan who frightens [you] of his supporters. So fear them not, but fear Me, if you are [indeed] believers."
+  },
+  {
+    number: 469,
+    surah: 3,
+    numberInSurah: 176,
+    text: "وَلَا يَحْزُنكَ ٱلَّذِينَ يُسَٰرِعُونَ فِى ٱلْكُفْرِ ۚ إِنَّهُمْ لَن يَضُرُّوا۟ ٱللَّهَ شَيْـًۭا ۗ يُرِيدُ ٱللَّهُ أَلَّا يَجْعَلَ لَهُمْ حَظًّۭا فِى ٱلْءَاخِرَةِ ۖ وَلَهُمْ عَذَابٌ عَظِيمٌ",
+    translation: "And do not be grieved, [O Muhammad], by those who hasten into disbelief. Indeed, they will never harm Allah at all. Allah intends that He should give them no share in the Hereafter, and for them is a great punishment."
+  },
+  {
+    number: 470,
+    surah: 3,
+    numberInSurah: 177,
+    text: "إِنَّ ٱلَّذِينَ ٱشْتَرَوُا۟ ٱلْكُفْرَ بِٱلْإِيمَٰنِ لَن يَضُرُّوا۟ ٱللَّهَ شَيْـًۭا وَلَهُمْ عَذَابٌ أَلِيمٌ",
+    translation: "Indeed, those who purchase disbelief [in exchange] for faith - never will they harm Allah at all, and for them is a painful punishment."
+  },
+  {
+    number: 471,
+    surah: 3,
+    numberInSurah: 178,
+    text: "وَلَا يَحْسَبَنَّ ٱلَّذِينَ كَفَرُوٓا۟ أَنَّمَا نُمْلِى لَهُمْ خَيْرٌۭ لِّأَنفُسِهِمْ ۚ إِنَّمَا نُمْلِى لَهُمْ لِيَزْدَادُوٓا۟ إِثْمًۭا ۚ وَلَهُمْ عَذَابٌۭ مُّهِينٌۭ",
+    translation: "And let not those who disbelieve ever think that [because] We extend their time [of enjoyment] it is better for them. We only extend it for them so that they may increase in sin, and for them is a humiliating punishment."
+  },  
+  {
+    number: 472,
+    surah: 3,
+    numberInSurah: 179,
+    text: "مَا كَانَ ٱللَّهُ لِيَذَرَ ٱلْمُؤْمِنِينَ عَلَىٰ مَآ أَنتُمْ عَلَيْهِ حَتَّىٰ يَمِيزَ ٱلْخَبِيثَ مِنَ ٱلطَّيِّبِ ۗ وَمَا كَانَ ٱللَّهُ لِيُطْلِعَكُمْ عَلَى ٱلْغَيْبِ وَلَٰكِنَّ ٱللَّهَ يَجْتَبِى مِن رُّسُلِهِۦ مَن يَشَآءُ ۖ فَـَٔامِنُوا۟ بِٱللَّهِ وَرُسُلِهِۦ ۚ وَإِن تُؤْمِنُوا۟ وَتَتَّقُوا۟ فَلَكُمْ أَجْرٌ عَظِيمٌۭ",
+    translation: "Allah would not leave the believers in that [state] you are in [presently] until He separates the evil from the good. Nor would Allah reveal to you the unseen. But [instead], Allah chooses of His messengers whom He wills. So believe in Allah and His messengers. And if you believe and fear Him, then for you is a great reward."
+  },
+  {
+    number: 473,
+    surah: 3,
+    numberInSurah: 180,
+    text: "وَلَا يَحْسَبَنَّ ٱلَّذِينَ يَبْخَلُونَ بِمَآ ءَاتَىٰهُمُ ٱللَّهُ مِن فَضْلِهِۦ هُوَ خَيْرًۭا لَّهُم ۖ بَلْ هُوَ شَرٌّۭ لَّهُمْ ۖ سَيُطَوَّقُونَ مَا بَخِلُوا۟ بِهِۦ يَوْمَ ٱلْقِيَٰمَةِ ۗ وَلِلَّهِ مِيرَٰثُ ٱلسَّمَٰوَٰتِ وَٱلْأَرْضِ ۗ وَٱللَّهُ بِمَا تَعْمَلُونَ خَبِيرٌۭ",
+    translation: "And let not those who [greedily] withhold what Allah has given them of His bounty ever think that it is better for them. Rather, it is worse for them. Their necks will be encircled by what they withheld on the Day of Resurrection. And to Allah belongs the heritage of the heavens and the earth. And Allah, with what you do, is [fully] Acquainted."
+  },
+  {
+    number: 474,
+    surah: 3,
+    numberInSurah: 181,
+    text: "لَّقَدْ سَمِعَ ٱللَّهُ قَوْلَ ٱلَّذِينَ قَالُوٓا۟ إِنَّ ٱللَّهَ فَقِيرٌۭ وَنَحْنُ أَغْنِيَآءُ ۘ سَنَكْتُبُ مَا قَالُوا۟ وَقَتْلَهُمُ ٱلْأَنۢبِيَآءَ بِغَيْرِ حَقٍّۢ وَنَقُولُ ذُوقُوا۟ عَذَابَ ٱلْحَرِيقِ",
+    translation: "Allah has certainly heard the statement of those who said, 'Indeed, Allah is poor, while we are rich.' We will record what they said and their killing of the prophets without right and will say, 'Taste the punishment of the Burning Fire.'"
+  },
+  {
+    number: 475,
+    surah: 3,
+    numberInSurah: 182,
+    text: "ذَٰلِكَ بِمَا قَدَّمَتْ أَيْدِيكُمْ وَأَنَّ ٱللَّهَ لَيْسَ بِظَلَّامٍۢ لِّلْعَبِيدِ",
+    translation: "That is for what your hands have put forth and because Allah is not ever unjust to His servants."
+  },
+  {
+    number: 476,
+    surah: 3,
+    numberInSurah: 183,
+    text: "ٱلَّذِينَ قَالُوٓا۟ إِنَّ ٱللَّهَ عَهِدَ إِلَيْنَآ أَلَّا نُؤْمِنَ لِرَسُولٍ حَتَّىٰ يَأْتِيَنَا بِقُرْبَانٍۢ تَأْكُلُهُ ٱلنَّارُ ۗ قُلْ قَدْ جَآءَكُمْ رُسُلٌۭ مِّن قَبْلِى بِٱلْبَيِّنَٰتِ وَبِٱلَّذِى قُلْتُمْ فَلِمَ قَتَلْتُمُوهُمْ إِن كُنتُمْ صَٰدِقِينَ",
+    translation: "Those who said, 'Indeed, Allah has taken our promise not to believe any messenger until he brings us an offering which fire [from heaven] will consume.' Say, 'There have already come to you messengers before me with clear proofs and [even] that of which you speak. So why did you kill them, if you should be truthful?'"
+  },
+  {
+    number: 477,
+    surah: 3,
+    numberInSurah: 184,
+    text: "فَإِن كَذَّبُوكَ فَقَدْ كُذِّبَ رُسُلٌۭ مِّن قَبْلِكَ جَآءُو بِٱلْبَيِّنَٰتِ وَٱلزُّبُرِ وَٱلْكِتَٰبِ ٱلْمُنِيرِ",
+    translation: "Then if they deny you, [O Muhammad] - so were messengers denied before you, who brought clear proofs and written ordinances and the enlightening Scripture."
+  },
+  {
+    number: 478,
+    surah: 3,
+    numberInSurah: 185,
+    text: "كُلُّ نَفْسٍۢ ذَآئِقَةُ ٱلْمَوْتِ ۗ وَإِنَّمَا تُوَفَّوْنَ أُجُورَكُمْ يَوْمَ ٱلْقِيَٰمَةِ ۖ فَمَن زُحْزِحَ عَنِ ٱلنَّارِ وَأُدْخِلَ ٱلْجَنَّةَ فَقَدْ فَازَ ۗ وَمَا ٱلْحَيَوٰةُ ٱلدُّنْيَآ إِلَّا مَتَٰعُ ٱلْغُرُورِ",
+    translation: "Every soul will taste death. And you will only be given your [full] compensation on the Day of Resurrection. So he who is drawn away from the Fire and admitted to Paradise has attained [his desire]. And what is the life of this world except the enjoyment of delusion."
+  },
+  {
+    number: 479,
+    surah: 3,
+    numberInSurah: 186,
+    text: "لَتُبْلَوُنَّ فِىٓ أَمْوَٰلِكُمْ وَأَنفُسِكُمْ وَلَتَسْمَعُنَّ مِنَ ٱلَّذِينَ أُوتُوا۟ ٱلْكِتَٰبَ مِن قَبْلِكُمْ وَمِنَ ٱلَّذِينَ أَشْرَكُوٓا۟ أَذًۭى كَثِيرًۭا ۖ وَإِن تَصْبِرُوا۟ وَتَتَّقُوا۟ فَإِنَّ ذَٰلِكَ مِنْ عَزْمِ ٱلْأُمُورِ",
+    translation: "You will surely be tested in your possessions and in yourselves. And you will surely hear from those who were given the Scripture before you and from those who associate others with Allah much abuse. But if you are patient and fear Allah - indeed, that is of the matters [worthy] of determination."
+  },
+  {
+    number: 480,
+    surah: 3,
+    numberInSurah: 187,
+    text: "وَإِذْ أَخَذَ ٱللَّهُ مِيثَٰقَ ٱلَّذِينَ أُوتُوا۟ ٱلْكِتَٰبَ لَتُبَيِّنُنَّهُۥ لِلنَّاسِ وَلَا تَكْتُمُونَهُۥ فَنَبَذُوهُ وَرَآءَ ظُهُورِهِمْ وَٱشْتَرَوْا۟ بِهِۦ ثَمَنًۭا قَلِيلًۭا ۖ فَبِئْسَ مَا يَشْتَرُونَ",
+    translation: "And [mention, O Muhammad], when Allah took a covenant from those who were given the Scripture, [saying], 'You must make it clear to the people and not conceal it.' But they threw it away behind their backs and exchanged it for a small price. And wretched is that which they purchased."
+  },  
+  {
+    number: 481,
+    surah: 3,
+    numberInSurah: 188,
+    text: "لَا تَحْسَبَنَّ ٱلَّذِينَ يَفْرَحُونَ بِمَآ أَتَوْا۟ وَيُحِبُّونَ أَن يُحْمَدُوا۟ بِمَا لَمْ يَفْعَلُوا۟ فَلَا تَحْسَبَنَّهُم بِمَفَازَةٍۢ مِّنَ ٱلْعَذَابِ ۖ وَلَهُمْ عَذَابٌ أَلِيمٌۭ",
+    translation: "Do not think that those who rejoice for what they have done and love to be praised for what they did not do - never think them [to be] in safety from the punishment, and for them is a painful punishment."
+  },
+  {
+    number: 482,
+    surah: 3,
+    numberInSurah: 189,
+    text: "وَلِلَّهِ مُلْكُ ٱلسَّمَٰوَٰتِ وَٱلْأَرْضِ ۗ وَٱللَّهُ عَلَىٰ كُلِّ شَىْءٍۢ قَدِيرٌ",
+    translation: "And to Allah belongs the dominion of the heavens and the earth, and Allah is over all things competent."
+  },
+  {
+    number: 483,
+    surah: 3,
+    numberInSurah: 190,
+    text: "إِنَّ فِى خَلْقِ ٱلسَّمَٰوَٰتِ وَٱلْأَرْضِ وَٱخْتِلَٰفِ ٱلَّيْلِ وَٱلنَّهَارِ لَءَايَٰتٍۢ لِّأُو۟لِى ٱلْأَلْبَٰبِ",
+    translation: "Indeed, in the creation of the heavens and the earth and the alternation of the night and the day are signs for those of understanding."
+  },
+  {
+    number: 484,
+    surah: 3,
+    numberInSurah: 191,
+    text: "ٱلَّذِينَ يَذْكُرُونَ ٱللَّهَ قِيَٰمًۭا وَقُعُودًۭا وَعَلَىٰ جُنُوبِهِمْ وَيَتَفَكَّرُونَ فِى خَلْقِ ٱلسَّمَٰوَٰتِ وَٱلْأَرْضِ رَبَّنَا مَا خَلَقْتَ هَٰذَا بَٰطِلًۭا سُبْحَٰنَكَ فَقِنَا عَذَابَ ٱلنَّارِ",
+    translation: "Who remember Allah while standing or sitting or [lying] on their sides and give thought to the creation of the heavens and the earth, [saying], 'Our Lord, You did not create this aimlessly; exalted are You [above such a thing]; then protect us from the punishment of the Fire.'"
+  },
+  {
+    number: 485,
+    surah: 3,
+    numberInSurah: 192,
+    text: "رَبَّنَآ إِنَّكَ مَن تُدْخِلِ ٱلنَّارَ فَقَدْ أَخْزَيْتَهُۥ ۖ وَمَا لِلظَّـٰلِمِينَ مِنْ أَنصَارٍۢ",
+    translation: "Our Lord, indeed whoever You admit to the Fire - You have disgraced him, and for the wrongdoers there are no helpers."
+  },
+  {
+    number: 486,
+    surah: 3,
+    numberInSurah: 193,
+    text: "رَّبَّنَآ إِنَّنَا سَمِعْنَا مُنَادِيًۭا يُنَادِى لِلْإِيمَٰنِ أَنْ ءَامِنُوا۟ بِرَبِّكُمْ فَـَٔامَنَّا ۚ رَبَّنَا فَٱغْفِرْ لَنَا ذُنُوبَنَا وَكَفِّرْ عَنَّا سَيِّـَٔاتِنَا وَتَوَفَّنَا مَعَ ٱلْأَبْرَارِ",
+    translation: "Our Lord, indeed we have heard a caller calling to faith, [saying], 'Believe in your Lord,' and we have believed. Our Lord, so forgive us our sins and remove from us our misdeeds and cause us to die with the righteous."
+  },
+  {
+    number: 487,
+    surah: 3,
+    numberInSurah: 194,
+    text: "رَبَّنَا وَءَاتِنَا مَا وَعَدتَّنَا عَلَىٰ رُسُلِكَ وَلَا تُخْزِنَا يَوْمَ ٱلْقِيَٰمَةِ ۗ إِنَّكَ لَا تُخْلِفُ ٱلْمِيعَادَ",
+    translation: "Our Lord, and grant us what You promised us through Your messengers and do not disgrace us on the Day of Resurrection. Indeed, You do not fail in [Your] promise."
+  },
+  {
+    number: 488,
+    surah: 3,
+    numberInSurah: 195,
+    text: "فَٱسْتَجَابَ لَهُمْ رَبُّهُمْ أَنِّى لَآ أُضِيعُ عَمَلَ عَامِلٍۢ مِّنكُم مِّن ذَكَرٍ أَوْ أُنثَىٰ ۖ بَعْضُكُم مِّنۢ بَعْضٍۢ ۖ فَٱلَّذِينَ هَاجَرُوا۟ وَأُخْرِجُوا۟ مِن دِيَٰرِهِمْ وَأُوذُوا۟ فِى سَبِيلِى وَقَٰتَلُوا۟ وَقُتِلُوا۟ لَأُكَفِّرَنَّ عَنْهُمْ سَيِّـَٔاتِهِمْ وَلَأُدْخِلَنَّهُمْ جَنَّٰتٍۢ تَجْرِى مِن تَحْتِهَا ٱلْأَنْهَٰرُ ثَوَابًۭا مِّنْ عِندِ ٱللَّهِ ۗ وَٱللَّهُ عِندَهُۥ حُسْنُ ٱلثَّوَابِ",
+    translation: "And their Lord responded to them, 'Never will I allow to be lost the work of [any] worker among you, whether male or female; you are of one another. So those who emigrated or were evicted from their homes or were harmed in My cause or fought or were killed - I will surely remove from them their misdeeds, and I will surely admit them to gardens beneath which rivers flow as reward from Allah, and Allah has with Him the best reward.'"
+  },
+  {
+    number: 489,
+    surah: 3,
+    numberInSurah: 196,
+    text: "لَا يَغُرَّنَّكَ تَقَلُّبُ ٱلَّذِينَ كَفَرُوا۟ فِى ٱلْبِلَٰدِ",
+    translation: "Be not deceived by the [uninhibited] movement of the disbelievers throughout the land."
+  },
+  {
+    number: 490,
+    surah: 3,
+    numberInSurah: 197,
+    text: "مَتَٰعٌۭ قَلِيلٌۭ ثُمَّ مَأْوَىٰهُمْ جَهَنَّمُ ۚ وَبِئْسَ ٱلْمِهَادُ",
+    translation: "[It is but] a small enjoyment; then their [final] refuge is Hell, and wretched is the resting place."
+  },  
+  {
+    number: 491,
+    surah: 3,
+    numberInSurah: 198,
+    text: "لَٰكِنِ ٱلَّذِينَ ٱتَّقَوْا۟ رَبَّهُمْ لَهُمْ جَنَّٰتٌۭ تَجْرِى مِن تَحْتِهَا ٱلْأَنْهَٰرُ خَٰلِدِينَ فِيهَا نُزُلًۭا مِّنْ عِندِ ٱللَّهِ ۗ وَمَا عِندَ ٱللَّهِ خَيْرٌۭ لِّلْأَبْرَارِ",
+    translation: "But those who feared their Lord will have gardens beneath which rivers flow, abiding eternally therein, as accommodation from Allah. And that which is with Allah is best for the righteous."
+  },
+  {
+    number: 492,
+    surah: 3,
+    numberInSurah: 199,
+    text: "وَإِنَّ مِنْ أَهْلِ ٱلْكِتَٰبِ لَمَن يُؤْمِنُ بِٱللَّهِ وَمَآ أُنزِلَ إِلَيْكُمْ وَمَآ أُنزِلَ إِلَيْهِمْ خَٰشِعِينَ لِلَّهِ ۖ لَا يَشْتَرُونَ بِـَٔايَٰتِ ٱللَّهِ ثَمَنًۭا قَلِيلًا ۗ أُو۟لَٰٓئِكَ لَهُمْ أَجْرُهُمْ عِندَ رَبِّهِمْ ۗ إِنَّ ٱللَّهَ سَرِيعُ ٱلْحِسَابِ",
+    translation: "And indeed, among the People of the Scripture are those who believe in Allah and what was revealed to you and what was revealed to them, being humbly submissive to Allah. They do not exchange the verses of Allah for a small price. Those will have their reward with their Lord. Indeed, Allah is swift in account."
+  },
+  {
+    number: 493,
+    surah: 3,
+    numberInSurah: 200,
+    text: "يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ ٱصْبِرُوا۟ وَصَابِرُوا۟ وَرَابِطُوا۟ وَٱتَّقُوا۟ ٱللَّهَ لَعَلَّكُمْ تُفْلِحُونَ",
+    translation: "O you who have believed, persevere and endure and remain stationed and fear Allah that you may be successful."
   }  
 ]
