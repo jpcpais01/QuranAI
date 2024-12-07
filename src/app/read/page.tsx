@@ -75,46 +75,26 @@ function ReadPageContent() {
     // Load last read position if no specific surah/verse is specified in URL
     if (!searchParams?.get("surah") && !searchParams?.get("verse")) {
       const lastReadPosition = localStorage.getItem("last-read-position")
-      if (lastReadPosition) {
-        const { surah, verse } = JSON.parse(lastReadPosition)
-        router.push(`/read?surah=${surah}&verse=${verse}`)
+      try {
+        if (lastReadPosition) {
+          const { surah, verse } = JSON.parse(lastReadPosition)
+          // Verify the surah number is valid (between 1 and 114)
+          if (surah >= 1 && surah <= 114) {
+            router.push(`/read?surah=${surah}&verse=${verse}`)
+          } else {
+            // Invalid surah, default to Al-Fatiha without verse
+            router.push('/read?surah=1')
+          }
+        } else {
+          // No last position, default to Al-Fatiha without verse
+          router.push('/read?surah=1')
+        }
+      } catch (error) {
+        // Error parsing saved position, default to Al-Fatiha without verse
+        router.push('/read?surah=1')
       }
     }
   }, [])
-
-  useEffect(() => {
-    if (!isLoading) {
-      // Handle scrolling to target verse or last read position
-      const scrollToVerse = async () => {
-        // Wait a bit for content to be fully rendered
-        await new Promise(resolve => setTimeout(resolve, 100));
-        
-        let verseToScrollTo = targetVerseNumber;
-        
-        // If no target verse specified and we have verses loaded, try to get last read position
-        if (!verseToScrollTo && verses.length > 0) {
-          const lastReadPosition = localStorage.getItem("last-read-position")
-          if (lastReadPosition) {
-            const { verse, surah } = JSON.parse(lastReadPosition)
-            if (surah === currentSurah?.number) {
-              verseToScrollTo = verse
-            }
-          }
-        }
-
-        if (verseToScrollTo) {
-          const verseElement = document.querySelector(
-            `[data-verse-id="${(currentSurah?.number || 0) * 1000 + verseToScrollTo}"]`
-          )
-          if (verseElement) {
-            verseElement.scrollIntoView({ behavior: 'smooth', block: 'center' })
-          }
-        }
-      }
-
-      scrollToVerse()
-    }
-  }, [isLoading, verses, targetVerseNumber, currentSurah?.number])
 
   useEffect(() => {
     // Set up intersection observer for middle of screen tracking
@@ -153,6 +133,40 @@ function ReadPageContent() {
 
     return () => observer.disconnect()
   }, [verses, currentSurah])
+
+  useEffect(() => {
+    if (!isLoading) {
+      // Handle scrolling to target verse or last read position
+      const scrollToVerse = async () => {
+        // Wait a bit for content to be fully rendered
+        await new Promise(resolve => setTimeout(resolve, 100));
+        
+        let verseToScrollTo = targetVerseNumber;
+        
+        // If no target verse specified and we have verses loaded, try to get last read position
+        if (!verseToScrollTo && verses.length > 0) {
+          const lastReadPosition = localStorage.getItem("last-read-position")
+          if (lastReadPosition) {
+            const { verse, surah } = JSON.parse(lastReadPosition)
+            if (surah === currentSurah?.number) {
+              verseToScrollTo = verse
+            }
+          }
+        }
+
+        if (verseToScrollTo) {
+          const verseElement = document.querySelector(
+            `[data-verse-id="${(currentSurah?.number || 0) * 1000 + verseToScrollTo}"]`
+          )
+          if (verseElement) {
+            verseElement.scrollIntoView({ behavior: 'smooth', block: 'center' })
+          }
+        }
+      }
+
+      scrollToVerse()
+    }
+  }, [isLoading, verses, targetVerseNumber, currentSurah?.number])
 
   const toggleBookmark = (verseId: number) => {
     const newBookmarks = bookmarks.includes(verseId)

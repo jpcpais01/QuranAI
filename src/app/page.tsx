@@ -185,7 +185,9 @@ export default function Home() {
                     Last read {formatTimestamp(lastRead.timestamp)}
                   </p>
                 </div>
-                <Link href={`/read?surah=${lastRead.surah}&verse=${lastRead.verse}`}>
+                <Link href={lastRead.surah >= 1 && lastRead.surah <= 114 
+                  ? `/read?surah=${lastRead.surah}&verse=${lastRead.verse}`
+                  : '/read?surah=1'}>
                   <Button className="w-full gap-2">
                     Continue Reading <ArrowRightIcon className="h-4 w-4" />
                   </Button>
@@ -194,7 +196,7 @@ export default function Home() {
             ) : (
               <div className="text-center py-8">
                 <p className="text-muted-foreground mb-4">Start your journey with the Quran</p>
-                <Link href="/read">
+                <Link href="/read?surah=1">
                   <Button>Start Reading</Button>
                 </Link>
               </div>
