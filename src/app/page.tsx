@@ -44,8 +44,11 @@ export default function Home() {
     surahName: string;
   }[]>([])
 
-  // Load last read position from localStorage
   useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
+    
+    // Load last read position from localStorage
     const lastPosition = localStorage.getItem("last-read-position")
     if (lastPosition) {
       setLastRead(JSON.parse(lastPosition))

@@ -337,8 +337,8 @@ function ReadPageContent() {
       </main>
 
       {/* Previous/Next Navigation */}
-      <div className="fixed bottom-14 left-0 right-0 border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-14 items-center justify-between">
+      <div className="fixed bottom-16 left-0 right-0 border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="container flex h-14 items-center justify-between max-w-screen-2xl mx-auto">
           {previousSurah && (
             <Link 
               href={`/read?surah=${previousSurah.number}`}

@@ -119,120 +119,122 @@ export default function BookmarksPage() {
   }
 
   return (
-    <div className="container py-8">
-      <div className="flex items-center justify-between mb-8">
-        <div className="flex items-center gap-2">
-          <BookmarkIcon className="h-6 w-6" />
-          <h1 className="text-2xl font-semibold">Bookmarks</h1>
+    <div className="container max-w-screen-2xl pb-24">
+      <div className="flex flex-col gap-8">
+        <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center gap-2">
+            <BookmarkIcon className="h-6 w-6" />
+            <h1 className="text-2xl font-semibold">Bookmarks</h1>
+          </div>
+          <div className="flex gap-2">
+            <Button
+              variant={sortBy === 'time' ? 'default' : 'outline'}
+              size="icon"
+              onClick={() => handleSort('time')}
+              title="Sort by Time"
+            >
+              <ClockIcon className="h-4 w-4" />
+            </Button>
+            <Button
+              variant={sortBy === 'quran' ? 'default' : 'outline'}
+              size="icon"
+              onClick={() => handleSort('quran')}
+              title="Sort by Order in Quran"
+            >
+              <BookOpenIcon className="h-4 w-4" />
+            </Button>
+          </div>
         </div>
-        <div className="flex gap-2">
-          <Button
-            variant={sortBy === 'time' ? 'default' : 'outline'}
-            size="icon"
-            onClick={() => handleSort('time')}
-            title="Sort by Time"
-          >
-            <ClockIcon className="h-4 w-4" />
-          </Button>
-          <Button
-            variant={sortBy === 'quran' ? 'default' : 'outline'}
-            size="icon"
-            onClick={() => handleSort('quran')}
-            title="Sort by Order in Quran"
-          >
-            <BookOpenIcon className="h-4 w-4" />
-          </Button>
-        </div>
-      </div>
 
-      {isLoading ? (
-        <div className="text-center text-muted-foreground">Loading bookmarks...</div>
-      ) : bookmarkedVerses.length === 0 ? (
-        <div className="text-center text-muted-foreground">
-          <p>No bookmarks yet</p>
-          <p className="mt-2">Start reading and bookmark verses to see them here</p>
-        </div>
-      ) : (
-        <div className="space-y-8">
-          {bookmarkedVerses.map((verse) => {
-            const verseId = (verse.surahNumber * 1000) + verse.numberInSurah
-            return (
-              <div key={verseId} className="group relative bg-muted/50 rounded-lg p-6">
-                <div className="flex items-start justify-between gap-4 mb-4">
-                  <div>
-                    <Link 
-                      href={`/read?surah=${verse.surahNumber}&verse=${verse.numberInSurah}`}
-                      className="font-medium hover:underline"
-                    >
-                      {verse.surahEnglishName}
-                    </Link>
-                    <span className="text-sm text-muted-foreground ml-2">
-                      Verse {verse.numberInSurah}
-                    </span>
+        {isLoading ? (
+          <div className="text-center text-muted-foreground">Loading bookmarks...</div>
+        ) : bookmarkedVerses.length === 0 ? (
+          <div className="text-center text-muted-foreground">
+            <p>No bookmarks yet</p>
+            <p className="mt-2">Start reading and bookmark verses to see them here</p>
+          </div>
+        ) : (
+          <div className="space-y-8">
+            {bookmarkedVerses.map((verse) => {
+              const verseId = (verse.surahNumber * 1000) + verse.numberInSurah
+              return (
+                <div key={verseId} className="group relative bg-muted/50 rounded-lg p-6">
+                  <div className="flex items-start justify-between gap-4 mb-4">
+                    <div>
+                      <Link 
+                        href={`/read?surah=${verse.surahNumber}&verse=${verse.numberInSurah}`}
+                        className="font-medium hover:underline"
+                      >
+                        {verse.surahEnglishName}
+                      </Link>
+                      <span className="text-sm text-muted-foreground ml-2">
+                        Verse {verse.numberInSurah}
+                      </span>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => {
+                          const textToCopy = `${verse.text}\n\n${verse.translation}\n\n- ${verse.surahEnglishName}, Verse ${verse.numberInSurah}`
+                          navigator.clipboard.writeText(textToCopy)
+                            .then(() => {
+                              setCopiedVerseId(verseId)
+                              toast({
+                                description: "Verse copied to clipboard",
+                                duration: 2000,
+                              })
+                              setTimeout(() => setCopiedVerseId(null), 2000)
+                            })
+                            .catch(() => {
+                              toast({
+                                description: "Failed to copy verse",
+                                variant: "destructive",
+                                duration: 2000,
+                              })
+                            })
+                        }}
+                        className="opacity-0 group-hover:opacity-100 transition-opacity"
+                      >
+                        {copiedVerseId === verseId ? (
+                          <CheckIcon className="h-4 w-4 text-green-500" />
+                        ) : (
+                          <ShareIcon className="h-4 w-4" />
+                        )}
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => sendVerseToChat(verse, verse.surahEnglishName)}
+                        className="opacity-0 group-hover:opacity-100 transition-opacity"
+                        title="Send to Chat"
+                      >
+                        <ChatBubbleLeftIcon className="h-4 w-4" />
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => removeBookmark(verseId)}
+                        className="opacity-0 group-hover:opacity-100 transition-opacity"
+                      >
+                        <BookmarkIcon className="h-4 w-4" />
+                      </Button>
+                    </div>
                   </div>
-                  <div className="flex gap-2">
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => {
-                        const textToCopy = `${verse.text}\n\n${verse.translation}\n\n- ${verse.surahEnglishName}, Verse ${verse.numberInSurah}`
-                        navigator.clipboard.writeText(textToCopy)
-                          .then(() => {
-                            setCopiedVerseId(verseId)
-                            toast({
-                              description: "Verse copied to clipboard",
-                              duration: 2000,
-                            })
-                            setTimeout(() => setCopiedVerseId(null), 2000)
-                          })
-                          .catch(() => {
-                            toast({
-                              description: "Failed to copy verse",
-                              variant: "destructive",
-                              duration: 2000,
-                            })
-                          })
-                      }}
-                      className="opacity-0 group-hover:opacity-100 transition-opacity"
-                    >
-                      {copiedVerseId === verseId ? (
-                        <CheckIcon className="h-4 w-4 text-green-500" />
-                      ) : (
-                        <ShareIcon className="h-4 w-4" />
-                      )}
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => sendVerseToChat(verse, verse.surahEnglishName)}
-                      className="opacity-0 group-hover:opacity-100 transition-opacity"
-                      title="Send to Chat"
-                    >
-                      <ChatBubbleLeftIcon className="h-4 w-4" />
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => removeBookmark(verseId)}
-                      className="opacity-0 group-hover:opacity-100 transition-opacity"
-                    >
-                      <BookmarkIcon className="h-4 w-4" />
-                    </Button>
+                  <div className="space-y-4">
+                    <p className="text-2xl font-arabic leading-loose text-right">
+                      {verse.text}
+                    </p>
+                    <p className="text-muted-foreground">
+                      {verse.translation}
+                    </p>
                   </div>
                 </div>
-                <div className="space-y-4">
-                  <p className="text-2xl font-arabic leading-loose text-right">
-                    {verse.text}
-                  </p>
-                  <p className="text-muted-foreground">
-                    {verse.translation}
-                  </p>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-      )}
+              )
+            })}
+          </div>
+        )}
+      </div>
     </div>
   )
 }

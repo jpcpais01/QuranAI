@@ -35,7 +35,7 @@ export default function SearchPage() {
   const filteredAndSortedResults = sortResults(searchResults)
 
   return (
-    <div className="container py-10">
+    <div className="container max-w-screen-2xl pb-24">
       <div className="max-w-2xl mx-auto">
         <h1 className="text-4xl font-bold mb-8">Search the Quran</h1>
         
