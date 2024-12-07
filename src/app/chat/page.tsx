@@ -1,17 +1,33 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { Send, RefreshCw } from "lucide-react"
+import { useState, useEffect, useRef } from "react"
+import { Send, RefreshCw, Copy, Check, Sparkles, Bot, UserRound } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+import { useToast } from "@/components/ui/use-toast"
 
 interface Message {
   role: "system" | "user" | "assistant"
   content: string
+  timestamp?: number
 }
 
 const SYSTEM_MESSAGE: Message = {
   role: "system",
   content:
-    "You are a knowledgeable assistant who helps users understand the Quran. You provide accurate information and context about verses, chapters, and Islamic teachings. When referencing Quranic verses, you cite them properly.",
+    "I'm your AI Quran companion. Ask me anything about the Quran, its teachings, verses, or Islamic context. I'm here to help you understand and reflect.",
+  timestamp: Date.now()
+}
+
+const formatTimestamp = (timestamp: number) => {
+  const date = new Date(timestamp)
+  const now = new Date()
+  const diffInMinutes = (now.getTime() - timestamp) / (1000 * 60)
+
+  if (diffInMinutes < 1) return 'just now'
+  if (diffInMinutes < 60) return `${Math.floor(diffInMinutes)} min ago`
+  if (diffInMinutes < 24 * 60) return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+  return date.toLocaleDateString()
 }
 
 export default function ChatPage() {
@@ -19,6 +35,14 @@ export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([SYSTEM_MESSAGE])
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [copiedMessageId, setCopiedMessageId] = useState<number | null>(null)
+  const messagesEndRef = useRef<HTMLDivElement>(null)
+  const { toast } = useToast()
+
+  // Scroll to bottom when messages change
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }, [messages])
 
   // Ensure we only interact with localStorage after mounting
   useEffect(() => {
@@ -51,7 +75,11 @@ export default function ChatPage() {
     const preFillMessage = localStorage.getItem("pre-filled-chat-message")
     if (preFillMessage) {
       // Automatically send the pre-filled message
-      const userMessage: Message = { role: "user", content: preFillMessage }
+      const userMessage: Message = { 
+        role: "user", 
+        content: preFillMessage,
+        timestamp: Date.now()
+      }
       setMessages((prev) => [...prev, userMessage])
       
       // Clear the pre-filled message from localStorage
@@ -89,18 +117,22 @@ export default function ChatPage() {
         throw new Error("Invalid response format")
       }
 
-      setMessages((prev) => [...prev, data.response])
+      const assistantResponse: Message = {
+        ...data.response,
+        timestamp: Date.now()
+      }
+
+      setMessages((prev) => [...prev, assistantResponse])
     } catch (error) {
       console.error("Error:", error)
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "assistant",
-          content: error instanceof Error 
-            ? `Error: ${error.message}` 
-            : "I apologize, but I encountered an error. Please try again.",
-        },
-      ])
+      const errorMessage: Message = {
+        role: "assistant",
+        content: error instanceof Error 
+          ? `Error: ${error.message}` 
+          : "I apologize, but I encountered an error. Please try again.",
+        timestamp: Date.now()
+      }
+      setMessages((prev) => [...prev, errorMessage])
     } finally {
       setIsLoading(false)
     }
@@ -110,16 +142,34 @@ export default function ChatPage() {
     e.preventDefault()
     if (!input.trim() || isLoading) return
 
-    const userMessage: Message = { role: "user", content: input.trim() }
+    const userMessage: Message = { 
+      role: "user", 
+      content: input.trim(),
+      timestamp: Date.now()
+    }
     setMessages((prev) => [...prev, userMessage])
     
     await handleSubmitMessage(userMessage)
   }
 
   const handleRefreshChat = () => {
-    // Clear localStorage and reset to initial state
     localStorage.removeItem("chat-messages")
     setMessages([SYSTEM_MESSAGE])
+    toast({
+      description: "Chat has been refreshed",
+      duration: 2000
+    })
+  }
+
+  const copyMessageToClipboard = (message: string, index: number) => {
+    navigator.clipboard.writeText(message).then(() => {
+      setCopiedMessageId(index)
+      setTimeout(() => setCopiedMessageId(null), 2000)
+      toast({
+        description: "Message copied to clipboard",
+        duration: 2000
+      })
+    })
   }
 
   // Prevent rendering on server to avoid hydration mismatches
@@ -128,68 +178,107 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="fixed inset-x-0 top-16 bottom-20">
+    <div className="fixed inset-x-0 top-16 bottom-20 flex flex-col">
       <div className="container mx-auto h-full px-4 flex flex-col">
-        <div className="py-2 flex justify-between items-center">
-          <h1 className="text-xl font-bold">Chat with Quran AI</h1>
-          <button 
-            onClick={handleRefreshChat}
-            className="p-2 rounded-md hover:bg-muted transition-colors"
-            title="Refresh Chat"
-          >
-            <RefreshCw className="h-5 w-5 text-muted-foreground" />
-          </button>
+        {/* Header */}
+        <div className="py-2 flex justify-between items-center border-b pb-2">
+          <div className="flex items-center gap-2">
+            <Sparkles className="h-6 w-6 text-primary" />
+            <h1 className="text-xl font-bold">Quran AI Companion</h1>
+          </div>
+          <div className="flex items-center gap-2">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={handleRefreshChat}
+              title="Refresh Chat"
+            >
+              <RefreshCw className="h-5 w-5" />
+            </Button>
+          </div>
         </div>
         
-        <div className="flex-1 min-h-0">
-          <div className="h-full rounded-md border bg-muted/50 overflow-hidden">
-            <div className="h-full overflow-y-auto p-3 space-y-2">
-              {messages.slice(1).map((message, index) => (
-                <div
-                  key={index}
-                  className={`flex ${
-                    message.role === "user" ? "justify-end" : "justify-start"
-                  }`}
-                >
-                  <div
-                    className={`max-w-[80%] rounded-lg p-2 ${
-                      message.role === "user"
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-background"
-                    }`}
-                  >
-                    <p className="whitespace-pre-wrap text-sm">{message.content}</p>
-                  </div>
+        {/* Messages Container */}
+        <div className="flex-1 min-h-0 overflow-y-auto py-4 space-y-4">
+          {messages.slice(1).map((message, index) => (
+            <div 
+              key={index} 
+              className={cn(
+                "flex items-start gap-3 max-w-full",
+                message.role === "user" ? "justify-end" : "justify-start"
+              )}
+            >
+              {message.role === "assistant" && (
+                <div className="bg-muted p-2 rounded-full">
+                  <Bot className="h-5 w-5 text-muted-foreground" />
                 </div>
-              ))}
-              {isLoading && (
-                <div className="flex justify-start">
-                  <div className="max-w-[80%] rounded-lg p-2 bg-background">
-                    <p className="text-sm">Thinking...</p>
-                  </div>
+              )}
+              <div 
+                className={cn(
+                  "rounded-2xl p-3 max-w-[80%] relative group",
+                  message.role === "user" 
+                    ? "bg-primary text-primary-foreground" 
+                    : "bg-muted"
+                )}
+              >
+                <p className="whitespace-pre-wrap text-sm">{message.content}</p>
+                <div className="flex items-center justify-between mt-1 text-xs opacity-50">
+                  {message.timestamp && (
+                    <span>{formatTimestamp(message.timestamp)}</span>
+                  )}
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity"
+                    onClick={() => copyMessageToClipboard(message.content, index)}
+                  >
+                    {copiedMessageId === index ? (
+                      <Check className="h-4 w-4 text-green-500" />
+                    ) : (
+                      <Copy className="h-4 w-4" />
+                    )}
+                  </Button>
+                </div>
+              </div>
+              {message.role === "user" && (
+                <div className="bg-muted p-2 rounded-full">
+                  <UserRound className="h-5 w-5 text-muted-foreground" />
                 </div>
               )}
             </div>
-          </div>
+          ))}
+          {isLoading && (
+            <div className="flex justify-start items-center gap-3">
+              <div className="bg-muted p-2 rounded-full">
+                <Bot className="h-5 w-5 text-muted-foreground animate-pulse" />
+              </div>
+              <div className="bg-muted rounded-2xl p-3">
+                <p className="text-sm text-muted-foreground">Thinking...</p>
+              </div>
+            </div>
+          )}
+          <div ref={messagesEndRef} />
         </div>
-
-        <div className="py-2">
+        
+        {/* Input Area */}
+        <div className="py-2 border-t">
           <form onSubmit={handleSubmit} className="flex gap-2">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask a question about the Quran..."
-              className="flex-1 px-3 py-2 rounded-md border bg-background focus:outline-none focus:ring-2 focus:ring-primary text-sm"
+              placeholder="Ask about the Quran..."
+              className="flex-1 px-4 py-2 rounded-full border bg-background focus:outline-none focus:ring-2 focus:ring-primary text-sm"
               disabled={isLoading}
             />
-            <button
-              type="submit"
-              className="px-3 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 disabled:opacity-50"
+            <Button 
+              type="submit" 
+              size="icon" 
               disabled={isLoading || !input.trim()}
+              className="rounded-full"
             >
-              <Send className="w-4 h-4" />
-            </button>
+              <Send className="h-5 w-5" />
+            </Button>
           </form>
         </div>
       </div>

@@ -14,7 +14,7 @@ interface SearchResult extends QuranVerse {
 }
 
 export default function SearchPage() {
-  const [sortBy, setSortBy] = useState<"relevance" | "surah">("relevance")
+  const [sortBy, setSortBy] = useState<"surah">("surah")
   const {
     searchQuery,
     setSearchQuery,
@@ -24,16 +24,12 @@ export default function SearchPage() {
   } = useDebouncedSearch()
 
   const sortResults = (results: SearchResult[]) => {
-    if (sortBy === "relevance") {
-      return [...results].sort((a, b) => b.score - a.score)
-    } else {
-      return [...results].sort((a, b) => {
-        if (a.surahNumber === b.surahNumber) {
-          return a.numberInSurah - b.numberInSurah
-        }
-        return a.surahNumber - b.surahNumber
-      })
-    }
+    return [...results].sort((a, b) => {
+      if (a.surahNumber === b.surahNumber) {
+        return a.numberInSurah - b.numberInSurah
+      }
+      return a.surahNumber - b.surahNumber
+    })
   }
 
   const filteredAndSortedResults = sortResults(searchResults)
@@ -60,16 +56,8 @@ export default function SearchPage() {
             <div className="space-x-2">
               <span className="text-muted-foreground">Sort by:</span>
               <Button
-                variant={sortBy === "relevance" ? "default" : "outline"}
+                variant="default"
                 size="sm"
-                onClick={() => setSortBy("relevance")}
-              >
-                Relevance
-              </Button>
-              <Button
-                variant={sortBy === "surah" ? "default" : "outline"}
-                size="sm"
-                onClick={() => setSortBy("surah")}
               >
                 Surah Order
               </Button>
@@ -96,37 +84,40 @@ export default function SearchPage() {
               <h2 className="text-lg font-semibold mb-4">
                 {searchResults.length} Results
               </h2>
-              <div className="rounded-md border p-4">
-                <div className="space-y-8">
-                  {filteredAndSortedResults.map((result) => {
-                    return (
-                      <div key={`${result.surahNumber}-${result.numberInSurah}`}>
-                        <div className="space-y-2">
-                          <div className="flex justify-between">
-                            <div className="flex-1">
-                              {/* Arabic Text */}
-                              <p className="text-xl font-arabic leading-loose text-right mb-2">
-                                {result.text}
-                              </p>
-                              {/* Translation */}
-                              <p className="text-gray-600 dark:text-gray-400">
-                                {result.translation}
-                              </p>
-                            </div>
-                            {/* Surah Info */}
-                            <div className="text-sm text-muted-foreground">
-                              <Link href={`/read?surah=${result.surahNumber}&verse=${result.numberInSurah}`}>
-                                {surahs.find(s => s.number === result.surahNumber)?.englishName} - 
-                                Verse {result.numberInSurah}
-                              </Link>
-                            </div>
-                          </div>
-                          <Separator className="mt-4" />
+              <div className="space-y-4">
+                {filteredAndSortedResults.map((result) => {
+                  return (
+                    <div 
+                      key={`${result.surahNumber}-${result.numberInSurah}`} 
+                      className="bg-card border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden"
+                    >
+                      <div className="p-6 space-y-4">
+                        <div className="space-y-3">
+                          {/* Arabic Text */}
+                          <p className="text-2xl font-arabic leading-loose text-right text-foreground/90">
+                            {result.text}
+                          </p>
+                          
+                          {/* Translation */}
+                          <p className="text-base text-muted-foreground leading-relaxed">
+                            {result.translation}
+                          </p>
+                        </div>
+                        
+                        {/* Surah Info */}
+                        <div className="flex justify-between items-center pt-4 border-t">
+                          <Link 
+                            href={`/read?surah=${result.surahNumber}&verse=${result.numberInSurah}`} 
+                            className="flex items-center gap-2 text-sm text-primary hover:underline"
+                          >
+                            {surahs.find(s => s.number === result.surahNumber)?.englishName} - 
+                            Verse {result.numberInSurah}
+                          </Link>
                         </div>
                       </div>
-                    )
-                  })}
-                </div>
+                    </div>
+                  )
+                })}
               </div>
             </div>
           )}

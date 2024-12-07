@@ -6,8 +6,9 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { getQuranVerses, type QuranVerse } from "@/lib/quran-service"
 import { BookmarkIcon } from "@heroicons/react/24/solid"
-import { ShareIcon, CheckIcon, ClockIcon, BookOpenIcon } from "@heroicons/react/24/outline"
+import { ShareIcon, CheckIcon, ClockIcon, BookOpenIcon, ChatBubbleLeftIcon } from "@heroicons/react/24/outline"
 import { useToast } from "@/components/ui/use-toast"
+import { useRouter } from "next/navigation"
 
 interface BookmarkedVerse extends QuranVerse {
   surahName: string
@@ -22,6 +23,7 @@ export default function BookmarksPage() {
   const [copiedVerseId, setCopiedVerseId] = useState<number | null>(null)
   const [sortBy, setSortBy] = useState<'time' | 'quran'>('time')
   const { toast } = useToast()
+  const router = useRouter()
 
   useEffect(() => {
     const loadBookmarkedVerses = async () => {
@@ -103,6 +105,17 @@ export default function BookmarksPage() {
 
   const handleSort = (method: 'time' | 'quran') => {
     setSortBy(method)
+  }
+
+  const sendVerseToChat = (verse: BookmarkedVerse, surahName: string) => {
+    // Construct the verse message
+    const verseMessage = `Verse from ${surahName}, Verse ${verse.numberInSurah}:\n\nArabic: ${verse.text}\n\nTranslation: ${verse.translation}`
+    
+    // Store the message in localStorage to be read by the chat page
+    localStorage.setItem("pre-filled-chat-message", verseMessage)
+    
+    // Navigate to the chat page
+    router.push("/chat")
   }
 
   return (
@@ -187,6 +200,15 @@ export default function BookmarksPage() {
                       ) : (
                         <ShareIcon className="h-4 w-4" />
                       )}
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => sendVerseToChat(verse, verse.surahEnglishName)}
+                      className="opacity-0 group-hover:opacity-100 transition-opacity"
+                      title="Send to Chat"
+                    >
+                      <ChatBubbleLeftIcon className="h-4 w-4" />
                     </Button>
                     <Button
                       variant="ghost"
