@@ -131,7 +131,7 @@ export default function Home() {
   }
 
   return (
-    <div className="flex-1 min-h-screen bg-gradient-to-b from-background to-muted pb-16">
+    <div className="flex-1 min-h-screen bg-gradient-to-b from-background to-muted pb-8">
       <main className="container px-4 py-8">
         {/* Verse of the Day */}
         <section className="mb-8">
@@ -235,12 +235,16 @@ export default function Home() {
                   </div>
                 </Card>
               ))}
-              <div className="text-center">
+              <div className="flex flex-col items-center gap-4 mt-4 mb-2">
                 <Link href="/bookmarks">
                   <Button variant="ghost" className="gap-2">
                     View All Bookmarks <ArrowRightIcon className="h-4 w-4" />
                   </Button>
                 </Link>
+                <div className="text-center text-muted-foreground">
+                  <p className="text-2xl font-arabic mb-1">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+                  <p className="text-sm">May you all benefit from this app.</p>
+                </div>
               </div>
             </div>
           </section>

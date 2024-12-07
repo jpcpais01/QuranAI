@@ -6,7 +6,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { getQuranVerses, type QuranVerse } from "@/lib/quran-service"
 import { BookmarkIcon } from "@heroicons/react/24/solid"
-import { ShareIcon, CheckIcon } from "@heroicons/react/24/outline"
+import { ShareIcon, CheckIcon, ClockIcon, BookOpenIcon } from "@heroicons/react/24/outline"
 import { useToast } from "@/components/ui/use-toast"
 
 interface BookmarkedVerse extends QuranVerse {
@@ -115,17 +115,19 @@ export default function BookmarksPage() {
         <div className="flex gap-2">
           <Button
             variant={sortBy === 'time' ? 'default' : 'outline'}
-            size="sm"
+            size="icon"
             onClick={() => handleSort('time')}
+            title="Sort by Time"
           >
-            Sort by Time
+            <ClockIcon className="h-4 w-4" />
           </Button>
           <Button
             variant={sortBy === 'quran' ? 'default' : 'outline'}
-            size="sm"
+            size="icon"
             onClick={() => handleSort('quran')}
+            title="Sort by Order in Quran"
           >
-            Sort by Order in Quran
+            <BookOpenIcon className="h-4 w-4" />
           </Button>
         </div>
       </div>
