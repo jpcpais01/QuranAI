@@ -8,30 +8,46 @@ interface Message {
   content: string
 }
 
+const SYSTEM_MESSAGE: Message = {
+  role: "system",
+  content:
+    "You are a knowledgeable assistant who helps users understand the Quran. You provide accurate information and context about verses, chapters, and Islamic teachings. When referencing Quranic verses, you cite them properly.",
+}
+
 export default function ChatPage() {
-  const [messages, setMessages] = useState<Message[]>(() => {
-    // Initialize messages from localStorage or with system message
-    const savedMessages = localStorage.getItem("chat-messages")
-    return savedMessages 
-      ? JSON.parse(savedMessages) 
-      : [
-          {
-            role: "system",
-            content:
-              "You are a knowledgeable assistant who helps users understand the Quran. You provide accurate information and context about verses, chapters, and Islamic teachings. When referencing Quranic verses, you cite them properly.",
-          },
-        ]
-  })
+  const [isMounted, setIsMounted] = useState(false)
+  const [messages, setMessages] = useState<Message[]>([SYSTEM_MESSAGE])
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
 
+  // Ensure we only interact with localStorage after mounting
+  useEffect(() => {
+    setIsMounted(true)
+
+    // Load messages from localStorage
+    const savedMessagesJson = localStorage.getItem("chat-messages")
+    if (savedMessagesJson) {
+      try {
+        const savedMessages = JSON.parse(savedMessagesJson)
+        // Ensure system message is always first
+        setMessages([SYSTEM_MESSAGE, ...savedMessages.slice(1)])
+      } catch (error) {
+        console.error("Failed to parse saved messages:", error)
+      }
+    }
+  }, [])
+
   // Save messages to localStorage whenever they change
   useEffect(() => {
-    localStorage.setItem("chat-messages", JSON.stringify(messages))
-  }, [messages])
+    if (isMounted) {
+      localStorage.setItem("chat-messages", JSON.stringify(messages))
+    }
+  }, [messages, isMounted])
 
   // Check for pre-filled message on component mount
   useEffect(() => {
+    if (!isMounted) return
+
     const preFillMessage = localStorage.getItem("pre-filled-chat-message")
     if (preFillMessage) {
       // Automatically send the pre-filled message
@@ -44,7 +60,7 @@ export default function ChatPage() {
       // Trigger message submission
       handleSubmitMessage(userMessage)
     }
-  }, [])
+  }, [isMounted])
 
   const handleSubmitMessage = async (messageToSend: Message) => {
     if (isLoading) return
@@ -103,13 +119,12 @@ export default function ChatPage() {
   const handleRefreshChat = () => {
     // Clear localStorage and reset to initial state
     localStorage.removeItem("chat-messages")
-    setMessages([
-      {
-        role: "system",
-        content:
-          "You are a knowledgeable assistant who helps users understand the Quran. You provide accurate information and context about verses, chapters, and Islamic teachings. When referencing Quranic verses, you cite them properly.",
-      },
-    ])
+    setMessages([SYSTEM_MESSAGE])
+  }
+
+  // Prevent rendering on server to avoid hydration mismatches
+  if (!isMounted) {
+    return null
   }
 
   return (
