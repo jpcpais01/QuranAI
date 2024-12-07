@@ -6,8 +6,7 @@ import { cn } from "@/lib/utils"
 import { 
   HomeIcon, 
   BookOpenIcon, 
-  MagnifyingGlassIcon, 
-  BookmarkIcon,
+  MagnifyingGlassIcon,
   ChatBubbleLeftIcon
 } from "@heroicons/react/24/outline"
 
@@ -15,7 +14,6 @@ const navigation = [
   { name: "Home", href: "/", icon: HomeIcon },
   { name: "Read", href: "/read", icon: BookOpenIcon },
   { name: "Search", href: "/search", icon: MagnifyingGlassIcon },
-  { name: "Bookmarks", href: "/bookmarks", icon: BookmarkIcon },
   { name: "Chat", href: "/chat", icon: ChatBubbleLeftIcon },
 ]
 

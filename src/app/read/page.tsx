@@ -7,13 +7,10 @@ import { SurahPicker } from "@/components/surah-picker"
 import { useState, useEffect, Suspense } from "react"
 import { getQuranVerses, type QuranVerse } from "@/lib/quran-service"
 import { LoadingPlaceholder } from "@/components/ui/loading"
-import { BookmarkIcon as BookmarkOutlineIcon } from "@heroicons/react/24/outline"
-import { BookmarkIcon as BookmarkSolidIcon } from "@heroicons/react/24/solid"
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
-import { addBookmark as addBookmarkService, removeBookmark as removeBookmarkService, isBookmarked as isBookmarkedService } from "@/lib/bookmark-service"
 import { ShareIcon } from "@heroicons/react/24/outline"
 
 function ReadPageContent() {
@@ -21,7 +18,6 @@ function ReadPageContent() {
   const surahNumber = Number(searchParams?.get("surah") || "1")
   const [showArabic, setShowArabic] = useState(true)
   const [verses, setVerses] = useState<QuranVerse[]>([])
-  const [bookmarkedVerses, setBookmarkedVerses] = useState<Set<string>>(new Set())
   const [isLoading, setIsLoading] = useState(true)
   
   const currentSurah = surahs.find(s => s.number === surahNumber)
@@ -56,46 +52,6 @@ function ReadPageContent() {
     loadVerses()
   }, [surahNumber, currentSurah, searchParams])
 
-  // Load bookmarked verses
-  useEffect(() => {
-    const updateBookmarkedVerses = () => {
-      const newBookmarkedVerses = new Set<string>()
-      verses.forEach(verse => {
-        const surahNumber = Math.floor(verse.number / 1000)
-        if (isBookmarkedService(surahNumber, verse.numberInSurah)) {
-          newBookmarkedVerses.add(`${surahNumber}-${verse.numberInSurah}`)
-        }
-      })
-      setBookmarkedVerses(newBookmarkedVerses)
-    }
-    updateBookmarkedVerses()
-  }, [verses])
-
-  const isBookmarked = (verse: QuranVerse) => {
-    const surahNumber = Math.floor(verse.number / 1000)
-    return bookmarkedVerses.has(`${surahNumber}-${verse.numberInSurah}`)
-  }
-
-  const addBookmark = (verse: QuranVerse) => {
-    const surahNumber = Math.floor(verse.number / 1000)
-    addBookmarkService({ ...verse, surah: surahNumber })
-    setBookmarkedVerses(prev => {
-      const newSet = new Set(prev)
-      newSet.add(`${surahNumber}-${verse.numberInSurah}`)
-      return newSet
-    })
-  }
-
-  const removeBookmark = (verse: QuranVerse) => {
-    const surahNumber = Math.floor(verse.number / 1000)
-    removeBookmarkService(surahNumber, verse.numberInSurah)
-    setBookmarkedVerses(prev => {
-      const newSet = new Set(prev)
-      newSet.delete(`${surahNumber}-${verse.numberInSurah}`)
-      return newSet
-    })
-  }
-
   if (!currentSurah) {
     return (
       <div className="flex min-h-screen items-center justify-center">
@@ -122,9 +78,6 @@ function ReadPageContent() {
                 onClick={() => setShowArabic(!showArabic)}
               >
                 {showArabic ? "Hide Arabic" : "Show Arabic"}
-              </Button>
-              <Button variant="ghost" size="icon">
-                <BookmarkOutlineIcon className="h-5 w-5" />
               </Button>
             </div>
           </div>
@@ -177,27 +130,6 @@ function ReadPageContent() {
                           )}
                           <p className="text-lg leading-relaxed">{verse.translation}</p>
                         </div>
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation()
-                            const isVerseBookmarked = isBookmarked(verse)
-                            if (isVerseBookmarked) {
-                              removeBookmark(verse)
-                            } else {
-                              addBookmark(verse)
-                            }
-                          }}
-                          className={cn(
-                            "opacity-0 group-hover:opacity-100 transition-opacity",
-                            isBookmarked(verse) && "opacity-100"
-                          )}
-                        >
-                          {isBookmarked(verse) ? (
-                            <BookmarkSolidIcon className="h-5 w-5 text-primary" />
-                          ) : (
-                            <BookmarkOutlineIcon className="h-5 w-5" />
-                          )}
-                        </button>
                       </div>
                     </div>
                   )

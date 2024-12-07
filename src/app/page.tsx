@@ -4,12 +4,10 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { getBookmarks, Bookmark } from "@/lib/bookmark-service"
 import { getSurahInfo } from "@/data/surahs"
 import { getQuranVerses } from "@/lib/quran-service"
 import { 
   BookOpenIcon, 
-  BookmarkIcon,
   ArrowRightIcon,
   StarIcon,
 } from "@heroicons/react/24/outline"
@@ -37,7 +35,6 @@ export default function Home() {
     text: string;
     translation: string;
   } | null>(null)
-  const [recentBookmarks, setRecentBookmarks] = useState<Bookmark[]>([])
 
   // Load last read position from localStorage
   useEffect(() => {
@@ -58,14 +55,6 @@ export default function Home() {
       }
     }
     loadVerseOfDay()
-  }, [])
-
-  // Load recent bookmarks
-  useEffect(() => {
-    const bookmarks = getBookmarks()
-    // Sort by timestamp (newest first) and take the first 3
-    const sortedBookmarks = [...bookmarks].sort((a, b) => b.timestamp - a.timestamp).slice(0, 3)
-    setRecentBookmarks(sortedBookmarks)
   }, [])
 
   const formatTimestamp = (timestamp: number) => {
@@ -163,56 +152,6 @@ export default function Home() {
               </div>
             )}
           </Card>
-        </section>
-
-        {/* Recent Bookmarks */}
-        <section>
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-2xl font-bold flex items-center gap-2">
-              <BookmarkIcon className="h-6 w-6 text-primary" />
-              Recent Bookmarks
-            </h2>
-            <Link href="/bookmarks">
-              <Button variant="ghost" size="sm">View All</Button>
-            </Link>
-          </div>
-          <div className="grid gap-4">
-            {recentBookmarks.length > 0 ? (
-              recentBookmarks.map((bookmark) => {
-                const surah = getSurahInfo(bookmark.surahNumber)
-                return (
-                  <Link 
-                    key={bookmark.id} 
-                    href={`/read?surah=${bookmark.surahNumber}&verse=${bookmark.verseNumber}`}
-                  >
-                    <Card className="p-4 hover:bg-accent transition-colors">
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h3 className="font-semibold">{surah?.englishName}</h3>
-                          <p className="text-sm text-muted-foreground">
-                            Verse {bookmark.verseNumber}
-                          </p>
-                          <p className="text-xs text-muted-foreground mt-1">
-                            {formatTimestamp(bookmark.timestamp)}
-                          </p>
-                        </div>
-                        <ArrowRightIcon className="h-5 w-5 text-muted-foreground" />
-                      </div>
-                    </Card>
-                  </Link>
-                )
-              })
-            ) : (
-              <Card className="p-6 text-center">
-                <p className="text-muted-foreground mb-4">
-                  Save your favorite verses for quick access
-                </p>
-                <Link href="/read">
-                  <Button variant="outline">Find Verses</Button>
-                </Link>
-              </Card>
-            )}
-          </div>
         </section>
       </main>
     </div>

@@ -33,13 +33,13 @@ export function MainNav() {
           Search
         </Link>
         <Link
-          href="/bookmarks"
+          href="/chat"
           className={cn(
             "transition-colors hover:text-foreground/80",
-            pathname === "/bookmarks" ? "text-foreground" : "text-foreground/60"
+            pathname === "/chat" ? "text-foreground" : "text-foreground/60"
           )}
         >
-          Bookmarks
+          Chat
         </Link>
       </nav>
     </div>
