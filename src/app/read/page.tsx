@@ -14,6 +14,8 @@ import { cn } from "@/lib/utils"
 import { ShareIcon } from "@heroicons/react/24/outline"
 import { BookmarkIcon as BookmarkOutlineIcon } from "@heroicons/react/24/outline"
 import { BookmarkIcon as BookmarkSolidIcon } from "@heroicons/react/24/solid"
+import { CheckIcon } from "@heroicons/react/24/outline"
+import { useToast } from "@/components/ui/use-toast"
 
 function ReadPageContent() {
   const searchParams = useSearchParams()
@@ -23,6 +25,8 @@ function ReadPageContent() {
   const [isLoading, setIsLoading] = useState(true)
   const [bookmarks, setBookmarks] = useState<number[]>([])
   const [lastReadVerse, setLastReadVerse] = useState<number>(0)
+  const [copiedVerseId, setCopiedVerseId] = useState<number | null>(null)
+  const { toast } = useToast()
   
   const currentSurah = surahs.find(s => s.number === surahNumber)
 
@@ -167,6 +171,25 @@ function ReadPageContent() {
                   const verseId = (currentSurah.number * 1000) + verse.numberInSurah
                   const isBookmarked = bookmarks.includes(verseId)
                   
+                  const copyToClipboard = async () => {
+                    const textToCopy = `${showArabic ? verse.text + '\n\n' : ''}${verse.translation}\n\n- ${currentSurah.englishName}, Verse ${verse.numberInSurah}`
+                    try {
+                      await navigator.clipboard.writeText(textToCopy)
+                      setCopiedVerseId(verseId)
+                      toast({
+                        description: "Verse copied to clipboard",
+                        duration: 2000,
+                      })
+                      setTimeout(() => setCopiedVerseId(null), 2000)
+                    } catch (err) {
+                      toast({
+                        description: "Failed to copy verse",
+                        variant: "destructive",
+                        duration: 2000,
+                      })
+                    }
+                  }
+                  
                   return (
                     <div 
                       key={verse.numberInSurah} 
@@ -193,9 +216,14 @@ function ReadPageContent() {
                           <Button
                             variant="ghost"
                             size="icon"
+                            onClick={copyToClipboard}
                             className="opacity-0 group-hover:opacity-100 transition-opacity"
                           >
-                            <ShareIcon className="h-4 w-4" />
+                            {copiedVerseId === verseId ? (
+                              <CheckIcon className="h-4 w-4 text-green-500" />
+                            ) : (
+                              <ShareIcon className="h-4 w-4" />
+                            )}
                           </Button>
                         </div>
                       </div>

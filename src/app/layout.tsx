@@ -5,6 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/site-header";
 import { MobileNav } from "@/components/mobile-nav";
+import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -41,6 +42,7 @@ export default function RootLayout({
             <SiteHeader />
             <div className="flex-1 pb-24 md:pb-0">{children}</div>
             <MobileNav />
+            <Toaster />
           </div>
         </ThemeProvider>
       </body>
