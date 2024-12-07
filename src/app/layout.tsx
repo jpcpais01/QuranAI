@@ -4,7 +4,7 @@ import "./globals.css";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/site-header";
-import { NavigationMenu } from "@/components/navigation-menu";
+import { MobileNav } from "@/components/mobile-nav";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -39,8 +39,8 @@ export default function RootLayout({
         >
           <div className="relative flex min-h-screen flex-col">
             <SiteHeader />
-            <div className="flex-1">{children}</div>
-            <NavigationMenu />
+            <div className="flex-1 pb-24 md:pb-0">{children}</div>
+            <MobileNav />
           </div>
         </ThemeProvider>
       </body>

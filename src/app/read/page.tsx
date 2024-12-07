@@ -12,6 +12,8 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { ShareIcon } from "@heroicons/react/24/outline"
+import { BookmarkIcon as BookmarkOutlineIcon } from "@heroicons/react/24/outline"
+import { BookmarkIcon as BookmarkSolidIcon } from "@heroicons/react/24/solid"
 
 function ReadPageContent() {
   const searchParams = useSearchParams()
@@ -19,6 +21,7 @@ function ReadPageContent() {
   const [showArabic, setShowArabic] = useState(true)
   const [verses, setVerses] = useState<QuranVerse[]>([])
   const [isLoading, setIsLoading] = useState(true)
+  const [bookmarks, setBookmarks] = useState<number[]>([])
   
   const currentSurah = surahs.find(s => s.number === surahNumber)
 
@@ -51,6 +54,23 @@ function ReadPageContent() {
 
     loadVerses()
   }, [surahNumber, currentSurah, searchParams])
+
+  useEffect(() => {
+    // Load bookmarks from localStorage
+    const savedBookmarks = localStorage.getItem("quran-bookmarks")
+    if (savedBookmarks) {
+      setBookmarks(JSON.parse(savedBookmarks))
+    }
+  }, [])
+
+  const toggleBookmark = (verseId: number) => {
+    const newBookmarks = bookmarks.includes(verseId)
+      ? bookmarks.filter(b => b !== verseId)
+      : [...bookmarks, verseId]
+    
+    setBookmarks(newBookmarks)
+    localStorage.setItem("quran-bookmarks", JSON.stringify(newBookmarks))
+  }
 
   if (!currentSurah) {
     return (
@@ -104,33 +124,45 @@ function ReadPageContent() {
             <ScrollArea className="h-full rounded-lg">
               <div className="space-y-8">
                 {verses.map((verse) => {
+                  const verseId = (currentSurah.number * 1000) + verse.numberInSurah
+                  const isBookmarked = bookmarks.includes(verseId)
+                  
                   return (
-                    <div key={verse.number} className="mb-8 relative group">
-                      <div 
-                        className="flex items-start justify-between gap-4 cursor-pointer"
-                        onClick={() => {
-                          // Update last read position when clicking a verse
-                          const surahNumber = Math.floor(verse.number / 1000)
-                          localStorage.setItem("last-read-position", JSON.stringify({
-                            surah: surahNumber,
-                            verse: verse.numberInSurah,
-                            timestamp: Date.now(),
-                            surahName: currentSurah?.englishName
-                          }))
-                        }}
-                      >
+                    <div key={verse.numberInSurah} className="space-y-4 relative group">
+                      <div className="flex items-start justify-between gap-4">
                         <span className="text-sm text-muted-foreground">
                           {verse.numberInSurah}
                         </span>
-                        <div className="flex-1">
-                          {showArabic && (
-                            <p className="text-2xl font-arabic leading-loose mb-4 text-right">
-                              {verse.text}
-                            </p>
-                          )}
-                          <p className="text-lg leading-relaxed">{verse.translation}</p>
+                        <div className="flex gap-2">
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            onClick={() => toggleBookmark(verseId)}
+                            className="opacity-0 group-hover:opacity-100 transition-opacity"
+                          >
+                            {isBookmarked ? (
+                              <BookmarkSolidIcon className="h-4 w-4" />
+                            ) : (
+                              <BookmarkOutlineIcon className="h-4 w-4" />
+                            )}
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="opacity-0 group-hover:opacity-100 transition-opacity"
+                          >
+                            <ShareIcon className="h-4 w-4" />
+                          </Button>
                         </div>
                       </div>
+                      {showArabic && (
+                        <p className="text-2xl font-arabic leading-loose text-right">
+                          {verse.text}
+                        </p>
+                      )}
+                      <p className="text-muted-foreground">
+                        {verse.translation}
+                      </p>
                     </div>
                   )
                 })}
