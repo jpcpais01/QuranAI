@@ -6,6 +6,8 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { getQuranVerses, type QuranVerse } from "@/lib/quran-service"
 import { BookmarkIcon } from "@heroicons/react/24/solid"
+import { ShareIcon, CheckIcon } from "@heroicons/react/24/outline"
+import { useToast } from "@/components/ui/use-toast"
 
 interface BookmarkedVerse extends QuranVerse {
   surahName: string
@@ -16,6 +18,8 @@ interface BookmarkedVerse extends QuranVerse {
 export default function BookmarksPage() {
   const [bookmarkedVerses, setBookmarkedVerses] = useState<BookmarkedVerse[]>([])
   const [isLoading, setIsLoading] = useState(true)
+  const [copiedVerseId, setCopiedVerseId] = useState<number | null>(null)
+  const { toast } = useToast()
 
   useEffect(() => {
     const loadBookmarkedVerses = async () => {
@@ -103,14 +107,46 @@ export default function BookmarksPage() {
                       Verse {verse.numberInSurah}
                     </span>
                   </div>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => removeBookmark(verseId)}
-                    className="opacity-0 group-hover:opacity-100 transition-opacity"
-                  >
-                    <BookmarkIcon className="h-4 w-4" />
-                  </Button>
+                  <div className="flex gap-2">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => {
+                        const textToCopy = `${verse.text}\n\n${verse.translation}\n\n- ${verse.surahEnglishName}, Verse ${verse.numberInSurah}`
+                        navigator.clipboard.writeText(textToCopy)
+                          .then(() => {
+                            setCopiedVerseId(verseId)
+                            toast({
+                              description: "Verse copied to clipboard",
+                              duration: 2000,
+                            })
+                            setTimeout(() => setCopiedVerseId(null), 2000)
+                          })
+                          .catch(() => {
+                            toast({
+                              description: "Failed to copy verse",
+                              variant: "destructive",
+                              duration: 2000,
+                            })
+                          })
+                      }}
+                      className="opacity-0 group-hover:opacity-100 transition-opacity"
+                    >
+                      {copiedVerseId === verseId ? (
+                        <CheckIcon className="h-4 w-4 text-green-500" />
+                      ) : (
+                        <ShareIcon className="h-4 w-4" />
+                      )}
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => removeBookmark(verseId)}
+                      className="opacity-0 group-hover:opacity-100 transition-opacity"
+                    >
+                      <BookmarkIcon className="h-4 w-4" />
+                    </Button>
+                  </div>
                 </div>
                 <div className="space-y-4">
                   <p className="text-2xl font-arabic leading-loose text-right">
