@@ -29,6 +29,7 @@ function ReadPageContent() {
   const { toast } = useToast()
   
   const currentSurah = surahs.find(s => s.number === surahNumber)
+  const targetVerseNumber = Number(searchParams?.get("verse")) || null
 
   const nextSurah = currentSurah ? surahs.find(s => s.number === surahNumber + 1) : null
   const previousSurah = currentSurah ? surahs.find(s => s.number === surahNumber - 1) : null
@@ -106,6 +107,17 @@ function ReadPageContent() {
 
     return () => observer.disconnect()
   }, [verses, currentSurah])
+
+  useEffect(() => {
+    if (!isLoading && targetVerseNumber) {
+      const verseElement = document.querySelector(`[data-verse-id="${(currentSurah?.number || 0) * 1000 + targetVerseNumber}"]`)
+      if (verseElement) {
+        setTimeout(() => {
+          verseElement.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }, 100) // Small delay to ensure content is rendered
+      }
+    }
+  }, [isLoading, targetVerseNumber, currentSurah?.number])
 
   const toggleBookmark = (verseId: number) => {
     const newBookmarks = bookmarks.includes(verseId)
