@@ -71,7 +71,50 @@ function ReadPageContent() {
     if (savedBookmarks) {
       setBookmarks(JSON.parse(savedBookmarks))
     }
+
+    // Load last read position if no specific surah/verse is specified in URL
+    if (!searchParams?.get("surah") && !searchParams?.get("verse")) {
+      const lastReadPosition = localStorage.getItem("last-read-position")
+      if (lastReadPosition) {
+        const { surah, verse } = JSON.parse(lastReadPosition)
+        router.push(`/read?surah=${surah}&verse=${verse}`)
+      }
+    }
   }, [])
+
+  useEffect(() => {
+    if (!isLoading) {
+      // Handle scrolling to target verse or last read position
+      const scrollToVerse = async () => {
+        // Wait a bit for content to be fully rendered
+        await new Promise(resolve => setTimeout(resolve, 100));
+        
+        let verseToScrollTo = targetVerseNumber;
+        
+        // If no target verse specified and we have verses loaded, try to get last read position
+        if (!verseToScrollTo && verses.length > 0) {
+          const lastReadPosition = localStorage.getItem("last-read-position")
+          if (lastReadPosition) {
+            const { verse, surah } = JSON.parse(lastReadPosition)
+            if (surah === currentSurah?.number) {
+              verseToScrollTo = verse
+            }
+          }
+        }
+
+        if (verseToScrollTo) {
+          const verseElement = document.querySelector(
+            `[data-verse-id="${(currentSurah?.number || 0) * 1000 + verseToScrollTo}"]`
+          )
+          if (verseElement) {
+            verseElement.scrollIntoView({ behavior: 'smooth', block: 'center' })
+          }
+        }
+      }
+
+      scrollToVerse()
+    }
+  }, [isLoading, verses, targetVerseNumber, currentSurah?.number])
 
   useEffect(() => {
     // Set up intersection observer for middle of screen tracking
@@ -110,17 +153,6 @@ function ReadPageContent() {
 
     return () => observer.disconnect()
   }, [verses, currentSurah])
-
-  useEffect(() => {
-    if (!isLoading && targetVerseNumber) {
-      const verseElement = document.querySelector(`[data-verse-id="${(currentSurah?.number || 0) * 1000 + targetVerseNumber}"]`)
-      if (verseElement) {
-        setTimeout(() => {
-          verseElement.scrollIntoView({ behavior: 'smooth', block: 'center' })
-        }, 100) // Small delay to ensure content is rendered
-      }
-    }
-  }, [isLoading, targetVerseNumber, currentSurah?.number])
 
   const toggleBookmark = (verseId: number) => {
     const newBookmarks = bookmarks.includes(verseId)
