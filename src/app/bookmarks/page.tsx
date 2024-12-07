@@ -13,17 +13,21 @@ interface BookmarkedVerse extends QuranVerse {
   surahName: string
   surahEnglishName: string
   surahNumber: number
+  timestamp: number
 }
 
 export default function BookmarksPage() {
   const [bookmarkedVerses, setBookmarkedVerses] = useState<BookmarkedVerse[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [copiedVerseId, setCopiedVerseId] = useState<number | null>(null)
+  const [sortBy, setSortBy] = useState<'time' | 'quran'>('time')
   const { toast } = useToast()
 
   useEffect(() => {
     const loadBookmarkedVerses = async () => {
       const savedBookmarks = localStorage.getItem("quran-bookmarks")
+      const bookmarkTimestamps = JSON.parse(localStorage.getItem("quran-bookmarks-timestamps") || "{}") as Record<number, number>
+      
       if (!savedBookmarks) {
         setIsLoading(false)
         return
@@ -46,7 +50,8 @@ export default function BookmarksPage() {
                 ...verse,
                 surahName: surah.name,
                 surahEnglishName: surah.englishName,
-                surahNumber
+                surahNumber,
+                timestamp: bookmarkTimestamps[bookmarkId] || Date.now()
               })
             }
           } catch (error) {
@@ -55,12 +60,14 @@ export default function BookmarksPage() {
         }
       }
 
-      setBookmarkedVerses(verses)
+      // Sort verses based on current sort method
+      const sortedVerses = sortVerses(verses, sortBy)
+      setBookmarkedVerses(sortedVerses)
       setIsLoading(false)
     }
 
     loadBookmarkedVerses()
-  }, [])
+  }, [sortBy])
 
   const removeBookmark = (verseId: number) => {
     const savedBookmarks = localStorage.getItem("quran-bookmarks")
@@ -68,6 +75,12 @@ export default function BookmarksPage() {
       const bookmarks = JSON.parse(savedBookmarks) as number[]
       const newBookmarks = bookmarks.filter(b => b !== verseId)
       localStorage.setItem("quran-bookmarks", JSON.stringify(newBookmarks))
+      
+      // Also remove from timestamps
+      const timestamps = JSON.parse(localStorage.getItem("quran-bookmarks-timestamps") || "{}")
+      delete timestamps[verseId]
+      localStorage.setItem("quran-bookmarks-timestamps", JSON.stringify(timestamps))
+      
       setBookmarkedVerses(prev => prev.filter(v => {
         const currentVerseId = (v.surahNumber * 1000) + v.numberInSurah
         return currentVerseId !== verseId
@@ -75,11 +88,46 @@ export default function BookmarksPage() {
     }
   }
 
+  const sortVerses = (verses: BookmarkedVerse[], sortMethod: 'time' | 'quran') => {
+    if (sortMethod === 'time') {
+      return [...verses].sort((a, b) => b.timestamp - a.timestamp)
+    } else {
+      return [...verses].sort((a, b) => {
+        if (a.surahNumber !== b.surahNumber) {
+          return a.surahNumber - b.surahNumber
+        }
+        return a.numberInSurah - b.numberInSurah
+      })
+    }
+  }
+
+  const handleSort = (method: 'time' | 'quran') => {
+    setSortBy(method)
+  }
+
   return (
     <div className="container py-8">
-      <div className="flex items-center gap-2 mb-8">
-        <BookmarkIcon className="h-6 w-6" />
-        <h1 className="text-2xl font-semibold">Bookmarks</h1>
+      <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center gap-2">
+          <BookmarkIcon className="h-6 w-6" />
+          <h1 className="text-2xl font-semibold">Bookmarks</h1>
+        </div>
+        <div className="flex gap-2">
+          <Button
+            variant={sortBy === 'time' ? 'default' : 'outline'}
+            size="sm"
+            onClick={() => handleSort('time')}
+          >
+            Sort by Time
+          </Button>
+          <Button
+            variant={sortBy === 'quran' ? 'default' : 'outline'}
+            size="sm"
+            onClick={() => handleSort('quran')}
+          >
+            Sort by Order in Quran
+          </Button>
+        </div>
       </div>
 
       {isLoading ? (

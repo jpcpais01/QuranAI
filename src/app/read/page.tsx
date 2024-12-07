@@ -126,6 +126,17 @@ function ReadPageContent() {
     
     setBookmarks(newBookmarks)
     localStorage.setItem("quran-bookmarks", JSON.stringify(newBookmarks))
+
+    // Update timestamps
+    const timestamps = JSON.parse(localStorage.getItem("quran-bookmarks-timestamps") || "{}")
+    if (bookmarks.includes(verseId)) {
+      // If removing bookmark, remove timestamp
+      delete timestamps[verseId]
+    } else {
+      // If adding bookmark, add timestamp
+      timestamps[verseId] = Date.now()
+    }
+    localStorage.setItem("quran-bookmarks-timestamps", JSON.stringify(timestamps))
   }
 
   if (!currentSurah) {
