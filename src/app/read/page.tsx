@@ -16,6 +16,8 @@ import { BookmarkIcon as BookmarkOutlineIcon } from "@heroicons/react/24/outline
 import { BookmarkIcon as BookmarkSolidIcon } from "@heroicons/react/24/solid"
 import { CheckIcon } from "@heroicons/react/24/outline"
 import { useToast } from "@/components/ui/use-toast"
+import { ChatBubbleLeftIcon } from "@heroicons/react/24/outline"
+import { useRouter } from "next/navigation"
 
 function ReadPageContent() {
   const searchParams = useSearchParams()
@@ -27,6 +29,7 @@ function ReadPageContent() {
   const [lastReadVerse, setLastReadVerse] = useState<number>(0)
   const [copiedVerseId, setCopiedVerseId] = useState<number | null>(null)
   const { toast } = useToast()
+  const router = useRouter()
   
   const currentSurah = surahs.find(s => s.number === surahNumber)
   const targetVerseNumber = Number(searchParams?.get("verse")) || null
@@ -139,6 +142,17 @@ function ReadPageContent() {
     localStorage.setItem("quran-bookmarks-timestamps", JSON.stringify(timestamps))
   }
 
+  const sendVerseToChat = (verse: QuranVerse, surahName: string) => {
+    // Construct the verse message
+    const verseMessage = `Verse from ${surahName}, Verse ${verse.numberInSurah}:\n\nArabic: ${verse.text}\n\nTranslation: ${verse.translation}`
+    
+    // Store the message in localStorage to be read by the chat page
+    localStorage.setItem("pre-filled-chat-message", verseMessage)
+    
+    // Navigate to the chat page
+    router.push("/chat")
+  }
+
   if (!currentSurah) {
     return (
       <div className="flex min-h-screen items-center justify-center">
@@ -248,6 +262,15 @@ function ReadPageContent() {
                               <ShareIcon className="h-4 w-4" />
                             )}
                           </Button>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            onClick={() => sendVerseToChat(verse, currentSurah.englishName)}
+                            className="opacity-0 group-hover:opacity-100 transition-opacity"
+                            title="Send to Chat"
+                          >
+                            <ChatBubbleLeftIcon className="h-4 w-4" />
+                          </Button>
                         </div>
                       </div>
                       {showArabic && (
@@ -268,8 +291,8 @@ function ReadPageContent() {
       </main>
 
       {/* Previous/Next Navigation */}
-      <div className="fixed bottom-16 left-0 right-0 border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
+      <div className="fixed bottom-14 left-0 right-0 border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="container flex h-14 items-center justify-between">
           {previousSurah && (
             <Link 
               href={`/read?surah=${previousSurah.number}`}

@@ -20,52 +20,47 @@ export function MobileNav() {
         <Link
           href="/read"
           className={cn(
-            "flex flex-col items-center gap-1",
+            "flex flex-col items-center",
             pathname === "/read" ? "text-foreground" : "text-muted-foreground"
           )}
         >
           <BookOpenIcon className="h-6 w-6" />
-          <span className="text-xs">Read</span>
         </Link>
         <Link
           href="/bookmarks"
           className={cn(
-            "flex flex-col items-center gap-1",
+            "flex flex-col items-center",
             pathname === "/bookmarks" ? "text-foreground" : "text-muted-foreground"
           )}
         >
           <BookmarkIcon className="h-6 w-6" />
-          <span className="text-xs">Bookmarks</span>
         </Link>
         <Link
           href="/"
           className={cn(
-            "flex flex-col items-center gap-1",
+            "flex flex-col items-center",
             pathname === "/" ? "text-foreground" : "text-muted-foreground"
           )}
         >
           <HomeIcon className="h-6 w-6" />
-          <span className="text-xs">Home</span>
         </Link>
         <Link
           href="/search"
           className={cn(
-            "flex flex-col items-center gap-1",
+            "flex flex-col items-center",
             pathname === "/search" ? "text-foreground" : "text-muted-foreground"
           )}
         >
           <MagnifyingGlassIcon className="h-6 w-6" />
-          <span className="text-xs">Search</span>
         </Link>
         <Link
           href="/chat"
           className={cn(
-            "flex flex-col items-center gap-1",
+            "flex flex-col items-center",
             pathname === "/chat" ? "text-foreground" : "text-muted-foreground"
           )}
         >
           <ChatBubbleLeftIcon className="h-6 w-6" />
-          <span className="text-xs">Chat</span>
         </Link>
       </nav>
     </div>

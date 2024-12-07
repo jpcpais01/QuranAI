@@ -1,7 +1,7 @@
 "use client"
 
-import { useState } from "react"
-import { Send } from "lucide-react"
+import { useState, useEffect } from "react"
+import { Send, RefreshCw } from "lucide-react"
 
 interface Message {
   role: "system" | "user" | "assistant"
@@ -9,22 +9,46 @@ interface Message {
 }
 
 export default function ChatPage() {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      role: "system",
-      content:
-        "You are a knowledgeable assistant who helps users understand the Quran. You provide accurate information and context about verses, chapters, and Islamic teachings. When referencing Quranic verses, you cite them properly.",
-    },
-  ])
+  const [messages, setMessages] = useState<Message[]>(() => {
+    // Initialize messages from localStorage or with system message
+    const savedMessages = localStorage.getItem("chat-messages")
+    return savedMessages 
+      ? JSON.parse(savedMessages) 
+      : [
+          {
+            role: "system",
+            content:
+              "You are a knowledgeable assistant who helps users understand the Quran. You provide accurate information and context about verses, chapters, and Islamic teachings. When referencing Quranic verses, you cite them properly.",
+          },
+        ]
+  })
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!input.trim() || isLoading) return
+  // Save messages to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem("chat-messages", JSON.stringify(messages))
+  }, [messages])
 
-    const userMessage: Message = { role: "user", content: input.trim() }
-    setMessages((prev) => [...prev, userMessage])
+  // Check for pre-filled message on component mount
+  useEffect(() => {
+    const preFillMessage = localStorage.getItem("pre-filled-chat-message")
+    if (preFillMessage) {
+      // Automatically send the pre-filled message
+      const userMessage: Message = { role: "user", content: preFillMessage }
+      setMessages((prev) => [...prev, userMessage])
+      
+      // Clear the pre-filled message from localStorage
+      localStorage.removeItem("pre-filled-chat-message")
+      
+      // Trigger message submission
+      handleSubmitMessage(userMessage)
+    }
+  }, [])
+
+  const handleSubmitMessage = async (messageToSend: Message) => {
+    if (isLoading) return
+
     setInput("")
     setIsLoading(true)
 
@@ -35,7 +59,7 @@ export default function ChatPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          messages: messages.slice(1).concat(userMessage),
+          messages: messages.slice(1).concat(messageToSend),
         }),
       })
 
@@ -66,11 +90,40 @@ export default function ChatPage() {
     }
   }
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!input.trim() || isLoading) return
+
+    const userMessage: Message = { role: "user", content: input.trim() }
+    setMessages((prev) => [...prev, userMessage])
+    
+    await handleSubmitMessage(userMessage)
+  }
+
+  const handleRefreshChat = () => {
+    // Clear localStorage and reset to initial state
+    localStorage.removeItem("chat-messages")
+    setMessages([
+      {
+        role: "system",
+        content:
+          "You are a knowledgeable assistant who helps users understand the Quran. You provide accurate information and context about verses, chapters, and Islamic teachings. When referencing Quranic verses, you cite them properly.",
+      },
+    ])
+  }
+
   return (
     <div className="fixed inset-x-0 top-16 bottom-20">
       <div className="container mx-auto h-full px-4 flex flex-col">
-        <div className="py-2">
+        <div className="py-2 flex justify-between items-center">
           <h1 className="text-xl font-bold">Chat with Quran AI</h1>
+          <button 
+            onClick={handleRefreshChat}
+            className="p-2 rounded-md hover:bg-muted transition-colors"
+            title="Refresh Chat"
+          >
+            <RefreshCw className="h-5 w-5 text-muted-foreground" />
+          </button>
         </div>
         
         <div className="flex-1 min-h-0">
