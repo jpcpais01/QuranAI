@@ -67,13 +67,15 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="h-[calc(100vh-5rem)] flex flex-col pb-16">
-      <div className="flex-1 container mx-auto px-4 flex flex-col h-full">
-        <h1 className="text-3xl font-bold my-3">Chat with Quran AI</h1>
+    <div className="fixed inset-x-0 top-16 bottom-20">
+      <div className="container mx-auto h-full px-4 flex flex-col">
+        <div className="py-2">
+          <h1 className="text-xl font-bold">Chat with Quran AI</h1>
+        </div>
         
-        <div className="flex-1 flex flex-col min-h-0">
-          <div className="flex-1 rounded-md border p-3 overflow-y-auto mb-2">
-            <div className="space-y-2">
+        <div className="flex-1 min-h-0">
+          <div className="h-full rounded-md border bg-muted/50 overflow-hidden">
+            <div className="h-full overflow-y-auto p-3 space-y-2">
               {messages.slice(1).map((message, index) => (
                 <div
                   key={index}
@@ -85,7 +87,7 @@ export default function ChatPage() {
                     className={`max-w-[80%] rounded-lg p-2 ${
                       message.role === "user"
                         ? "bg-primary text-primary-foreground"
-                        : "bg-muted"
+                        : "bg-background"
                     }`}
                   >
                     <p className="whitespace-pre-wrap text-sm">{message.content}</p>
@@ -94,26 +96,28 @@ export default function ChatPage() {
               ))}
               {isLoading && (
                 <div className="flex justify-start">
-                  <div className="max-w-[80%] rounded-lg p-2 bg-muted">
+                  <div className="max-w-[80%] rounded-lg p-2 bg-background">
                     <p className="text-sm">Thinking...</p>
                   </div>
                 </div>
               )}
             </div>
           </div>
+        </div>
 
+        <div className="py-2">
           <form onSubmit={handleSubmit} className="flex gap-2">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask a question about the Quran..."
-              className="flex-1 px-3 py-1.5 rounded-md border focus:outline-none focus:ring-2 focus:ring-primary text-sm"
+              className="flex-1 px-3 py-2 rounded-md border bg-background focus:outline-none focus:ring-2 focus:ring-primary text-sm"
               disabled={isLoading}
             />
             <button
               type="submit"
-              className="px-3 py-1.5 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 disabled:opacity-50"
+              className="px-3 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 disabled:opacity-50"
               disabled={isLoading || !input.trim()}
             >
               <Send className="w-4 h-4" />
