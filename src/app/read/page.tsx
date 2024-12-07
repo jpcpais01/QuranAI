@@ -22,6 +22,7 @@ function ReadPageContent() {
   const [verses, setVerses] = useState<QuranVerse[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [bookmarks, setBookmarks] = useState<number[]>([])
+  const [lastReadVerse, setLastReadVerse] = useState<number>(0)
   
   const currentSurah = surahs.find(s => s.number === surahNumber)
 
@@ -38,9 +39,10 @@ function ReadPageContent() {
           // Save last read position
           const verseNumber = Number(searchParams?.get("verse")) || 1
           const surahNumber = Math.floor(verseNumber / 1000)
+          const actualVerseNumber = verseNumber % 1000
           localStorage.setItem("last-read-position", JSON.stringify({
             surah: surahNumber,
-            verse: verseNumber,
+            verse: actualVerseNumber,
             timestamp: Date.now(),
             surahName: currentSurah?.englishName
           }))
@@ -62,6 +64,44 @@ function ReadPageContent() {
       setBookmarks(JSON.parse(savedBookmarks))
     }
   }, [])
+
+  useEffect(() => {
+    // Set up intersection observer for middle of screen tracking
+    const observerCallback: IntersectionObserverCallback = (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const verseElement = entry.target as HTMLElement
+          const verseNumber = parseInt(verseElement.dataset.verseId || "0")
+          if (verseNumber) {
+            setLastReadVerse(verseNumber)
+            // Save last read position
+            const surahNumber = Math.floor(verseNumber / 1000)
+            const actualVerseNumber = verseNumber % 1000
+            localStorage.setItem("last-read-position", JSON.stringify({
+              surah: surahNumber,
+              verse: actualVerseNumber,
+              timestamp: Date.now(),
+              surahName: currentSurah?.englishName
+            }))
+          }
+        }
+      })
+    }
+
+    // Create observer with threshold at middle of screen
+    const observer = new IntersectionObserver(observerCallback, {
+      root: null,
+      rootMargin: "-50% 0px",
+      threshold: 0
+    })
+
+    // Observe all verse elements
+    document.querySelectorAll('[data-verse-id]').forEach(verse => {
+      observer.observe(verse)
+    })
+
+    return () => observer.disconnect()
+  }, [verses, currentSurah])
 
   const toggleBookmark = (verseId: number) => {
     const newBookmarks = bookmarks.includes(verseId)
@@ -128,7 +168,11 @@ function ReadPageContent() {
                   const isBookmarked = bookmarks.includes(verseId)
                   
                   return (
-                    <div key={verse.numberInSurah} className="space-y-4 relative group">
+                    <div 
+                      key={verse.numberInSurah} 
+                      className="space-y-4 relative group"
+                      data-verse-id={verseId}
+                    >
                       <div className="flex items-start justify-between gap-4">
                         <span className="text-sm text-muted-foreground">
                           {verse.numberInSurah}
