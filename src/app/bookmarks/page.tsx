@@ -9,6 +9,7 @@ import { BookmarkIcon } from "@heroicons/react/24/solid"
 import { ShareIcon, CheckIcon, ClockIcon, BookOpenIcon, ChatBubbleLeftIcon } from "@heroicons/react/24/outline"
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation"
+import cn from "classnames"
 
 interface BookmarkedVerse extends QuranVerse {
   surahName: string
@@ -20,8 +21,9 @@ interface BookmarkedVerse extends QuranVerse {
 export default function BookmarksPage() {
   const [bookmarkedVerses, setBookmarkedVerses] = useState<BookmarkedVerse[]>([])
   const [isLoading, setIsLoading] = useState(true)
-  const [copiedVerseId, setCopiedVerseId] = useState<number | null>(null)
   const [sortBy, setSortBy] = useState<'time' | 'quran'>('time')
+  const [copiedVerseId, setCopiedVerseId] = useState<number | null>(null)
+  const [expandedVerseId, setExpandedVerseId] = useState<number | null>(null)
   const { toast } = useToast()
   const router = useRouter()
 
@@ -121,7 +123,7 @@ export default function BookmarksPage() {
   return (
     <div className="container max-w-screen-2xl pb-24">
       <div className="flex flex-col gap-8">
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
             <BookmarkIcon className="h-6 w-6" />
             <h1 className="text-2xl font-semibold">Bookmarks</h1>
@@ -154,78 +156,103 @@ export default function BookmarksPage() {
             <p className="mt-2">Start reading and bookmark verses to see them here</p>
           </div>
         ) : (
-          <div className="space-y-8">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4">
             {bookmarkedVerses.map((verse) => {
               const verseId = (verse.surahNumber * 1000) + verse.numberInSurah
+              const isExpanded = expandedVerseId === verseId
+
               return (
-                <div key={verseId} className="group relative bg-muted/50 rounded-lg p-6">
-                  <div className="flex items-start justify-between gap-4 mb-4">
+                <div 
+                  key={verseId} 
+                  className={cn(
+                    "group relative bg-muted/50 rounded-lg p-3 sm:p-4 transition-all duration-200 cursor-pointer",
+                    isExpanded && "col-span-2 sm:col-span-2 lg:col-span-3 p-4 sm:p-6"
+                  )}
+                  onClick={() => setExpandedVerseId(isExpanded ? null : verseId)}
+                >
+                  <div className="flex items-start justify-between gap-2 mb-2">
                     <div>
                       <Link 
                         href={`/read?surah=${verse.surahNumber}&verse=${verse.numberInSurah}`}
-                        className="font-medium hover:underline"
+                        className="font-medium hover:underline text-sm"
+                        onClick={(e) => e.stopPropagation()}
                       >
                         {verse.surahEnglishName}
                       </Link>
-                      <span className="text-sm text-muted-foreground ml-2">
+                      <span className="text-xs text-muted-foreground ml-1">
                         Verse {verse.numberInSurah}
                       </span>
                     </div>
-                    <div className="flex gap-2">
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={() => {
-                          const textToCopy = `${verse.text}\n\n${verse.translation}\n\n- ${verse.surahEnglishName}, Verse ${verse.numberInSurah}`
-                          navigator.clipboard.writeText(textToCopy)
-                            .then(() => {
-                              setCopiedVerseId(verseId)
-                              toast({
-                                description: "Verse copied to clipboard",
-                                duration: 2000,
+                    {isExpanded && (
+                      <div className="flex gap-1">
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            const textToCopy = `${verse.text}\n\n${verse.translation}\n\n- ${verse.surahEnglishName}, Verse ${verse.numberInSurah}`
+                            navigator.clipboard.writeText(textToCopy)
+                              .then(() => {
+                                setCopiedVerseId(verseId)
+                                toast({
+                                  description: "Verse copied to clipboard",
+                                  duration: 2000,
+                                })
+                                setTimeout(() => setCopiedVerseId(null), 2000)
                               })
-                              setTimeout(() => setCopiedVerseId(null), 2000)
-                            })
-                            .catch(() => {
-                              toast({
-                                description: "Failed to copy verse",
-                                variant: "destructive",
-                                duration: 2000,
+                              .catch(() => {
+                                toast({
+                                  description: "Failed to copy verse",
+                                  variant: "destructive",
+                                  duration: 2000,
+                                })
                               })
-                            })
-                        }}
-                        className="opacity-0 group-hover:opacity-100 transition-opacity"
-                      >
-                        {copiedVerseId === verseId ? (
-                          <CheckIcon className="h-4 w-4 text-green-500" />
-                        ) : (
-                          <ShareIcon className="h-4 w-4" />
-                        )}
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={() => sendVerseToChat(verse, verse.surahEnglishName)}
-                        className="opacity-0 group-hover:opacity-100 transition-opacity"
-                        title="Send to Chat"
-                      >
-                        <ChatBubbleLeftIcon className="h-4 w-4" />
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={() => removeBookmark(verseId)}
-                        className="opacity-0 group-hover:opacity-100 transition-opacity"
-                      >
-                        <BookmarkIcon className="h-4 w-4" />
-                      </Button>
-                    </div>
+                          }}
+                          className="h-8 w-8"
+                        >
+                          {copiedVerseId === verseId ? (
+                            <CheckIcon className="h-3 w-3 text-green-500" />
+                          ) : (
+                            <ShareIcon className="h-3 w-3" />
+                          )}
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            sendVerseToChat(verse, verse.surahEnglishName)
+                          }}
+                          className="h-8 w-8"
+                          title="Send to Chat"
+                        >
+                          <ChatBubbleLeftIcon className="h-3 w-3" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            removeBookmark(verseId)
+                          }}
+                          className="h-8 w-8"
+                        >
+                          <BookmarkIcon className="h-3 w-3" />
+                        </Button>
+                      </div>
+                    )}
                   </div>
-                  <div className="space-y-4">
-                    <p className="text-2xl font-arabic leading-loose text-right">
+                  <div className="space-y-2">
+                    <p className={cn(
+                      "font-arabic leading-relaxed text-right transition-all duration-200",
+                      isExpanded ? "text-2xl" : "text-lg line-clamp-2"
+                    )}>
                       {verse.text}
                     </p>
-                    <p className="text-muted-foreground">
+                    <p className={cn(
+                      "text-muted-foreground transition-all duration-200",
+                      isExpanded ? "text-base" : "text-xs line-clamp-2"
+                    )}>
                       {verse.translation}
                     </p>
                   </div>
